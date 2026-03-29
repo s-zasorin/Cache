@@ -1,0 +1,12 @@
+xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	22.03-s001: Started on Mar 18, 2026 at 18:07:56 MSK
+xrun
+	-compile
+	-64bit
+	/home/Stepan/cache/build/../pkg/cache_pkg.sv
+	/home/Stepan/cache/build/../rtl/configure_cache.sv
+	/home/Stepan/cache/build/../rtl/single_port_ram.sv
+Recompiling... reason: file '../rtl/configure_cache.sv' is newer than expected.
+	expected: Wed Mar 18 18:03:09 2026
+	actual:   Wed Mar 18 18:03:39 2026
+TOOL:	xrun(64)	22.03-s001: Exiting on Mar 18, 2026 at 18:07:56 MSK  (total: 00:00:00)

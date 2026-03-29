@@ -1,0 +1,18 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-compile
+-64bit
+/home/Stepan/cache/build/../pkg/cache_pkg.sv
+/home/Stepan/cache/build/../rtl/configure_cache.sv
+/home/Stepan/cache/build/../rtl/single_port_ram.sv
+/home/Stepan/cache/build/../tb/tb_configure_cache.sv
+/home/Stepan/cache/build/../rtl/bin_decoder.sv
+/home/Stepan/cache/build/../rtl/onehot_decoder.sv
+/home/Stepan/cache/build/../rtl/plru.sv
+/home/Stepan/cache/build/../rtl/priority_encoder.sv
+-xmlibdirpath
+/home/Stepan/cache/build/work
+-l
+/home/Stepan/cache/build/compile.log

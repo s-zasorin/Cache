@@ -1,0 +1,9 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-compile
+-64bit
+/home/Stepan/cache/build/../pkg/cache_pkg.sv
+/home/Stepan/cache/build/../rtl/configure_cache.sv
+/home/Stepan/cache/build/../rtl/single_port_ram.sv

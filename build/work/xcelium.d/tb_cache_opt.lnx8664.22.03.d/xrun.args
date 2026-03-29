@@ -1,0 +1,17 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-elaborate
+-elabonly
+-64bit
+-top
+tb_cache
+-snapshot
+tb_cache_opt
+-xmlibdirpath
+/home/Stepan/cache/build/work
+-access
++rwc
+-l
+/home/Stepan/cache/build/opt.log

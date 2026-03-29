@@ -1,0 +1,38 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-amsdlibdir
+/home/Stepan/cache/build/work/xcelium.d/AMSD
+-gui
+-INPUT
+xlm.tcl
+-INPUT
+@run
+-MESSAGES
+-svseed
+11496
+-sndynseed
+11496
+tb_configure_cache_opt
++EMGRLOG
+/home/Stepan/cache/build/run.log
+-XLSTIME
+1773989909
+-XLKEEP
+-XLMODE
+/home/Stepan/cache/build/work/xcelium.d/run.lnx8664.22.03.d
+-RUNMODE
+-CDSLIB
+/home/Stepan/cache/build/work/xcelium.d/run.lnx8664.22.03.d/cds.lib
+-HDLVAR
+/home/Stepan/cache/build/work/xcelium.d/run.lnx8664.22.03.d/hdl.var
+-XLNAME
+xrun
+-XLVERSION
+"TOOL:	xrun(64)	22.03-s001"
+-CMDPSIM
+-amsdlibdir
+/home/Stepan/cache/build/work/xcelium.d/AMSD
+-XLNAME
+./work/xcelium.d/run.lnx8664.22.03.d/miet-cad-edu_20200

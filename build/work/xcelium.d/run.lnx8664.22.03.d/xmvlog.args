@@ -1,0 +1,28 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-XLMODE
+/home/Stepan/cache/build/work/xcelium.d/run.lnx8664.22.03.d
+-RUNMODE
+-amsdlibdir
+/home/Stepan/cache/build/work/xcelium.d/AMSD
+/home/Stepan/cache/build/../pkg/cache_pkg.sv
+/home/Stepan/cache/build/../rtl/configure_cache.sv
+/home/Stepan/cache/build/../rtl/single_port_ram.sv
+/home/Stepan/cache/build/../tb/tb_configure_cache.sv
+/home/Stepan/cache/build/../rtl/bin_decoder.sv
+/home/Stepan/cache/build/../rtl/onehot_decoder.sv
+/home/Stepan/cache/build/../rtl/plru.sv
+/home/Stepan/cache/build/../rtl/priority_encoder.sv
+-XMLIBDIRPATH
+/home/Stepan/cache/build/work
+-CDSLIB
+/home/Stepan/cache/build/work/xcelium.d/run.lnx8664.22.03.d/cdsrun.lib
+-HDLVAR
+/home/Stepan/cache/build/work/xcelium.d/run.lnx8664.22.03.d/hdlrun.var
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+/home/Stepan/cache/build/work/xcelium.d/run.lnx8664.22.03.d/xllibs
+-ALLOWUNBOUND

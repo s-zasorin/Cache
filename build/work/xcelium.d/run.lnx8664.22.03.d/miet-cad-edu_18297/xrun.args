@@ -1,0 +1,20 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-r
+tb_configure_cache_opt
+-64bit
+-xmlibdirpath
+/home/Stepan/cache/build/work
+-seed
+5735
+-l
+/home/Stepan/cache/build/run.log
+-gui
+-incdir
+/home/Stepan/cache/build/../pkg
+-input
+xlm.tcl
+-input
+@run

@@ -1,0 +1,140 @@
+*** Message Type: info ***
+When: Wed Mar 18 06:44:24 PM MSK 2026
+SimVision started.
+Version: TOOL:  simvision(64)   22.03-s001
+User: Stepan
+Host: miet-cad-edu
+Platform: Linux/x86_64/3.10.0-1160.119.1.el7.x86_64
+Started: Wed Mar 18 06:44:24 PM MSK 2026
+Command: /local/tools/cadence/XCELIUM/22.03/tools.lnx86/simvision/bin/64bit/simvision.exe -connect dc:miet-cad-edu:51606 -64BIT -nocopyright
+Work Directory: /home/Stepan/cache/build
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:44:24 PM MSK 2026
+Create browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:44:25 PM MSK 2026
+Create console window: "Console"
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:46:25 PM MSK 2026
+Delete browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:46:25 PM MSK 2026
+Exit XM-Sim: batch
+      Design: tb_configure_cache_opt
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim(64)       22.03-s001
+        User: Stepan
+        Host: miet-cad-edu
+Time Started: Wed Mar 18 06:44:23 PM MSK 2026
+  Process ID: 16053
+   Directory: /home/Stepan/cache/build
+     Command: xrun -r tb_configure_cache_opt -64bit -xmlibdirpath /home/Stepan/cache/build/work -seed 1337 -l /home/Stepan/cache/build/run.log -gui -incdir /home/Stepan/cache/build/../pkg -input xlm.tcl -input @run
+
+ 
+*** Message Type: error ***
+When: Wed Mar 18 06:46:49 PM MSK 2026
+XM-Sim Crashed:
+      Design: tb_configure_cache_opt
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim(64)       22.03-s001
+        User: Stepan
+        Host: miet-cad-edu
+Time Started: Wed Mar 18 06:44:23 PM MSK 2026
+  Process ID: 16053
+   Directory: /home/Stepan/cache/build
+     Command: xrun -r tb_configure_cache_opt -64bit -xmlibdirpath /home/Stepan/cache/build/work -seed 1337 -l /home/Stepan/cache/build/run.log -gui -incdir /home/Stepan/cache/build/../pkg -input xlm.tcl -input @run
+      Design: tb_configure_cache_opt
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:  xmsim(64)       22.03-s001
+        User: Stepan
+        Host: miet-cad-edu
+Time Started: Wed Mar 18 06:44:23 PM MSK 2026
+  Process ID: 16053
+   Directory: /home/Stepan/cache/build
+     Command: xrun -r tb_configure_cache_opt -64bit -xmlibdirpath /home/Stepan/cache/build/work -seed 1337 -l /home/Stepan/cache/build/run.log -gui -incdir /home/Stepan/cache/build/../pkg -input xlm.tcl -input @run
+
+Outstanding STRAP Requests:
+        strap::get g . -cs
+ 
+*** Message Type: error ***
+When: Wed Mar 18 06:46:49 PM MSK 2026
+list must have an even number of elements
+    while executing
+"array set simdata serviceattrs"
+    (object "::.simRecoveryDialog0" method "::SimRecoveryDialog::_getErrorMessages" body line 9)
+    invoked from within
+"::.simRecoveryDialog0 _getErrorMessages event !state.crash handle @public@56 diag {
+Outstanding STRAP Requests:
+        strap::get g . -cs} requests {..."
+    (in namespace inscope "::SimRecoveryDialog" script line 1)
+    invoked from within
+"namespace inscope ::SimRecoveryDialog {::.simRecoveryDialog0 _getErrorMessages} event !state.crash handle @public@56 diag {
+Outstanding STRAP Requests..."
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:46:49 PM MSK 2026
+Connect to Simulator
+      Design: tb_configure_cache_opt
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim(64)       22.03-s001
+        User: Stepan
+        Host: miet-cad-edu
+Time Started: Wed Mar 18 06:44:23 PM MSK 2026
+  Process ID: 16053
+   Directory: /home/Stepan/cache/build
+     Command: xrun -r tb_configure_cache_opt -64bit -xmlibdirpath /home/Stepan/cache/build/work -seed 1337 -l /home/Stepan/cache/build/run.log -gui -incdir /home/Stepan/cache/build/../pkg -input xlm.tcl -input @run
+
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:46:50 PM MSK 2026
+Create utility window: "Properties"
+ 
+*** Message Type: error ***
+When: Wed Mar 18 06:46:53 PM MSK 2026
+expected boolean value but got ""
+    while executing
+"if {$tabText} {
+   foreach tab $tabs {
+        if {[$cons getIndex $tab] == $tabText} {
+           set doneTab $tab
+               break
+      }
+  }
+    }"
+    (object "::.simRecoveryDialog0" method "::SimRecoveryDialog::_cleanupDatabases" body line 14)
+    invoked from within
+"_cleanupDatabases"
+    ("restart" arm line 6)
+    invoked from within
+"switch -- $choice1 {
+        restart {
+          ::savescript::init
+     set ::savescript::_crash2restartSim 1
+          _saveStates
+            set ::savescript::_crash2rest..."
+    (object "::.simRecoveryDialog0" method "::SimRecoveryDialog::_dialogchoice" body line 5)
+    invoked from within
+"::.simRecoveryDialog0 _dialogchoice {restart }"
+    (in namespace inscope "::cwidgets::Dialog" script line 1)
+    invoked from within
+"namespace inscope ::cwidgets::Dialog {::.simRecoveryDialog0 _dialogchoice {restart }}"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 $cmd"
+    (procedure "Button::_release" line 18)
+    invoked from within
+"Button::_release .simRecoveryDialog0-dialog.bbox.b0"
+    (command bound to event)
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:47:02 PM MSK 2026
+SimVision Exit.
+ 

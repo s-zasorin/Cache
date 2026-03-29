@@ -1,0 +1,103 @@
+*** Message Type: info ***
+When: Wed Mar 18 06:36:55 PM MSK 2026
+SimVision started.
+Version: TOOL:  simvision(64)   22.03-s001
+User: Stepan
+Host: miet-cad-edu
+Platform: Linux/x86_64/3.10.0-1160.119.1.el7.x86_64
+Started: Wed Mar 18 06:36:55 PM MSK 2026
+Command: /local/tools/cadence/XCELIUM/22.03/tools.lnx86/simvision/bin/64bit/simvision.exe -connect dc:miet-cad-edu:37371 -64BIT -nocopyright
+Work Directory: /home/Stepan/cache/build
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:36:56 PM MSK 2026
+Create browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:36:56 PM MSK 2026
+Create console window: "Console"
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:37:25 PM MSK 2026
+Delete browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:37:25 PM MSK 2026
+Exit XM-Sim: batch
+      Design: tb_configure_cache_opt
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim(64)       22.03-s001
+        User: Stepan
+        Host: miet-cad-edu
+Time Started: Wed Mar 18 06:36:54 PM MSK 2026
+  Process ID: 12526
+   Directory: /home/Stepan/cache/build
+     Command: xrun -r tb_configure_cache_opt -64bit -xmlibdirpath /home/Stepan/cache/build/work -seed 19723 -l /home/Stepan/cache/build/run.log -gui -incdir /home/Stepan/cache/build/../pkg -input xlm.tcl -input @run
+
+ 
+*** Message Type: error ***
+When: Wed Mar 18 06:37:26 PM MSK 2026
+XM-Sim Crashed:
+      Design: tb_configure_cache_opt
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim(64)       22.03-s001
+        User: Stepan
+        Host: miet-cad-edu
+Time Started: Wed Mar 18 06:36:54 PM MSK 2026
+  Process ID: 12526
+   Directory: /home/Stepan/cache/build
+     Command: xrun -r tb_configure_cache_opt -64bit -xmlibdirpath /home/Stepan/cache/build/work -seed 19723 -l /home/Stepan/cache/build/run.log -gui -incdir /home/Stepan/cache/build/../pkg -input xlm.tcl -input @run
+      Design: tb_configure_cache_opt
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL: xmsim(64)       22.03-s001
+        User: Stepan
+        Host: miet-cad-edu
+Time Started: Wed Mar 18 06:36:54 PM MSK 2026
+  Process ID: 12526
+   Directory: /home/Stepan/cache/build
+     Command: xrun -r tb_configure_cache_opt -64bit -xmlibdirpath /home/Stepan/cache/build/work -seed 19723 -l /home/Stepan/cache/build/run.log -gui -incdir /home/Stepan/cache/build/../pkg -input xlm.tcl -input @run
+
+Outstanding STRAP Requests:
+        strap::get g . -cs
+ 
+*** Message Type: error ***
+When: Wed Mar 18 06:37:26 PM MSK 2026
+list must have an even number of elements
+    while executing
+"array set simdata serviceattrs"
+    (object "::.simRecoveryDialog0" method "::SimRecoveryDialog::_getErrorMessages" body line 9)
+    invoked from within
+"::.simRecoveryDialog0 _getErrorMessages event !state.crash handle @public@56 diag {
+Outstanding STRAP Requests:
+        strap::get g . -cs} requests {..."
+    (in namespace inscope "::SimRecoveryDialog" script line 1)
+    invoked from within
+"namespace inscope ::SimRecoveryDialog {::.simRecoveryDialog0 _getErrorMessages} event !state.crash handle @public@56 diag {
+Outstanding STRAP Requests..."
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:37:26 PM MSK 2026
+Connect to Simulator
+      Design: tb_configure_cache_opt
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim(64)       22.03-s001
+        User: Stepan
+        Host: miet-cad-edu
+Time Started: Wed Mar 18 06:36:54 PM MSK 2026
+  Process ID: 12526
+   Directory: /home/Stepan/cache/build
+     Command: xrun -r tb_configure_cache_opt -64bit -xmlibdirpath /home/Stepan/cache/build/work -seed 19723 -l /home/Stepan/cache/build/run.log -gui -incdir /home/Stepan/cache/build/../pkg -input xlm.tcl -input @run
+
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:37:27 PM MSK 2026
+Create utility window: "Properties"
+ 
+*** Message Type: info ***
+When: Wed Mar 18 06:37:30 PM MSK 2026
+SimVision Exit.
+ 

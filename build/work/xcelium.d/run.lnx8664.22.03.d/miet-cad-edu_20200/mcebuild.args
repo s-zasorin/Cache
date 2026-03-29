@@ -1,0 +1,11 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-INCDIR
+/home/Stepan/cache/build/../pkg
+-MESSAGES
+-RUNMODE
+-load_parsed_libraries
+-default_work_lib
+worklib

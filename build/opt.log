@@ -1,0 +1,40 @@
+xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	22.03-s001: Started on Mar 29, 2026 at 19:31:10 MSK
+xrun
+	-elaborate
+	-elabonly
+	-64bit
+	-top tb_configure_cache
+	-snapshot tb_configure_cache_opt
+	-xmlibdirpath /home/Stepan/cache/build/work
+	-access +rwc
+	-l /home/Stepan/cache/build/opt.log
+No source files were detected on the command line yet something was detected as out of date: Missing module worklib.configure_cache:sv (SIG) <0x18ca1791>.
+Rerun with the required source files to ensure recompile.
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+	Top level design units:
+		cache_pkg
+		tb_configure_cache
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.single_port_ram:sv <0x1424d75e>
+			streams:  13, words:  5764
+		worklib.configure_cache:sv <0x1dd81405>
+			streams:  18, words:  5283
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		              Instances  Unique
+		Modules:             11       7
+		Verilog packages:     1       1
+		Registers:           88      51
+		Scalar wires:        67       -
+		Vectored wires:      34       -
+		Always blocks:       25      12
+		Initial blocks:       2       2
+		Cont. assignments:   30      10
+		Pseudo assignments:  42      24
+	Writing initial simulation snapshot: worklib.tb_configure_cache_opt:sv
+TOOL:	xrun(64)	22.03-s001: Exiting on Mar 29, 2026 at 19:31:11 MSK  (total: 00:00:01)

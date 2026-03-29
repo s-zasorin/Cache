@@ -1,0 +1,19 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-XLMODE
+./xcelium.d/run.lnx8664.22.03.d
+-RUNMODE
+/home/Stepan/cache/build/../pkg/cache_pkg.sv
+/home/Stepan/cache/build/../rtl/configure_cache.sv
+/home/Stepan/cache/build/../rtl/single_port_ram.sv
+-CDSLIB
+./xcelium.d/run.lnx8664.22.03.d/cdsrun.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.22.03.d/hdlrun.var
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+./xcelium.d/run.lnx8664.22.03.d/xllibs
+-ALLOWUNBOUND
