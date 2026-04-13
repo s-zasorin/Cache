@@ -14,10 +14,11 @@ module single_port_ram
   logic [DATA_WIDTH - 1:0]   ram          [RAM_DEPTH];
   logic [DATA_WIDTH - 1:0]   read_data_ff            ;
 
-  always_ff @(posedge clk_i)
-    if (wr_en)
-      ram[set]   <= write_data_i;
-    read_data_ff <= ram[set];
+  always_ff @(posedge clk_i) begin
+    if (wr_en_i)
+      ram[addr_i] <= write_data_i;
+    read_data_ff  <= ram[addr_i] ;
+  end
 
   assign read_data_o = read_data_ff ;
 

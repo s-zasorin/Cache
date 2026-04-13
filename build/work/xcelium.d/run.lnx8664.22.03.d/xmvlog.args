@@ -13,8 +13,8 @@
 /home/Stepan/cache/build/../tb/tb_configure_cache.sv
 /home/Stepan/cache/build/../rtl/bin_decoder.sv
 /home/Stepan/cache/build/../rtl/onehot_decoder.sv
-/home/Stepan/cache/build/../rtl/plru.sv
-/home/Stepan/cache/build/../rtl/priority_encoder.sv
+/home/Stepan/cache/build/../rtl/plru_calc.sv
+/home/Stepan/cache/build/../rtl/plru_refill.sv
 -XMLIBDIRPATH
 /home/Stepan/cache/build/work
 -CDSLIB

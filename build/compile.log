@@ -1,5 +1,5 @@
 xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s001: Started on Mar 29, 2026 at 19:31:09 MSK
+TOOL:	xrun(64)	22.03-s001: Started on Apr 13, 2026 at 19:41:42 MSK
 xrun
 	-compile
 	-64bit
@@ -9,17 +9,14 @@ xrun
 	/home/Stepan/cache/build/../tb/tb_configure_cache.sv
 	/home/Stepan/cache/build/../rtl/bin_decoder.sv
 	/home/Stepan/cache/build/../rtl/onehot_decoder.sv
-	/home/Stepan/cache/build/../rtl/plru.sv
-	/home/Stepan/cache/build/../rtl/priority_encoder.sv
+	/home/Stepan/cache/build/../rtl/plru_calc.sv
+	/home/Stepan/cache/build/../rtl/plru_refill.sv
 	-xmlibdirpath /home/Stepan/cache/build/work
 	-l /home/Stepan/cache/build/compile.log
-Recompiling... reason: file '../rtl/configure_cache.sv' is newer than expected.
-	expected: Tue Mar 24 23:11:54 2026
-	actual:   Sun Mar 29 19:18:19 2026
-file: /home/Stepan/cache/build/../rtl/configure_cache.sv
-	module worklib.configure_cache:sv
+Recompiling... reason: file '../tb/tb_configure_cache.sv' is newer than expected.
+	expected: Mon Apr 13 19:13:28 2026
+	actual:   Mon Apr 13 19:41:34 2026
+file: /home/Stepan/cache/build/../tb/tb_configure_cache.sv
+	module worklib.tb_configure_cache:sv
 		errors: 0, warnings: 0
-file: /home/Stepan/cache/build/../rtl/single_port_ram.sv
-	module worklib.single_port_ram:sv
-		errors: 0, warnings: 0
-TOOL:	xrun(64)	22.03-s001: Exiting on Mar 29, 2026 at 19:31:10 MSK  (total: 00:00:01)
+TOOL:	xrun(64)	22.03-s001: Exiting on Apr 13, 2026 at 19:41:43 MSK  (total: 00:00:01)

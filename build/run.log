@@ -1,17 +1,17 @@
 xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s001: Started on Mar 29, 2026 at 19:31:11 MSK
+TOOL:	xrun(64)	22.03-s001: Started on Apr 13, 2026 at 19:41:44 MSK
 xrun
 	-r tb_configure_cache_opt
 	-64bit
 	-xmlibdirpath /home/Stepan/cache/build/work
-	-seed 12557
+	-seed 26171
 	-l /home/Stepan/cache/build/run.log
 	-gui
 	-incdir /home/Stepan/cache/build/../pkg
 	-input xlm.tcl
 	-input @run
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
-SVSEED set from command line: 12557
+SVSEED set from command line: 26171
 xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 xmsim: *E,IONOEN: file does not exist, xlm.tcl.
 
@@ -20,19 +20,3414 @@ Relinquished control to SimVision...
 xcelium> 
 xcelium> source /local/tools/cadence/XCELIUM/22.03/tools/xcelium/files/xmsimrc
 xcelium> run
-Simulation complete via $finish(1) at time 85 NS + 1
-../tb/tb_configure_cache.sv:53     $finish();
-xcelium> database -open waves -into waves.shm -default
-Created default SHM database waves
-xcelium> probe -create -shm tb_configure_cache.DUT.addr_i tb_configure_cache.DUT.aresetn_i tb_configure_cache.DUT.clk_i tb_configure_cache.DUT.empty_set tb_configure_cache.DUT.evict_way tb_configure_cache.DUT.hit tb_configure_cache.DUT.hit_o tb_configure_cache.DUT.miss_o tb_configure_cache.DUT.read_data tb_configure_cache.DUT.read_data_o tb_configure_cache.DUT.valid_o tb_configure_cache.DUT.valid_out tb_configure_cache.DUT.write_data_i tb_configure_cache.DUT.write_enable tb_configure_cache.DUT.write_enable_i tb_configure_cache.DUT.write_plru_enable tb_configure_cache.DUT.write_way
+
+=========================================
+Starting Cache Testbench
+Configuration: 8 sets, 4 ways
+=========================================
+
+
+=== TEST 1: Cache Fill ===
+
+[TEST] Sending read request for address 0x0
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MISS] Address: 0x8
+
+[TEST] Sending read request for address 0xc
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MISS] Address: 0x10
+
+[TEST] Sending read request for address 0x14
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MISS] Address: 0x18
+
+[TEST] Sending read request for address 0x1c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x24
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MISS] Address: 0x28
+
+[TEST] Sending read request for address 0x2c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MISS] Address: 0x30
+
+[TEST] Sending read request for address 0x34
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MISS] Address: 0x38
+
+[TEST] Sending read request for address 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MISS] Address: 0x3c
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MISS] Address: 0x40
+
+[TEST] Sending read request for address 0x44
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MISS] Address: 0x44
+
+[TEST] Sending read request for address 0x48
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MISS] Address: 0x48
+
+[TEST] Sending read request for address 0x4c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x48, evict_way: x
+[DEBUG] Memory request for address 0x48, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x48, evict_way: x
+[DEBUG] Memory request for address 0x48, evict_way: x
+[MISS] Address: 0x4c
+
+[TEST] Sending read request for address 0x50
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MISS] Address: 0x50
+
+[TEST] Sending read request for address 0x54
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x50, evict_way: x
+[DEBUG] Memory request for address 0x50, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x50, evict_way: x
+[DEBUG] Memory request for address 0x50, evict_way: x
+[MISS] Address: 0x54
+
+[TEST] Sending read request for address 0x58
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MISS] Address: 0x58
+
+[TEST] Sending read request for address 0x5c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x58, evict_way: x
+[DEBUG] Memory request for address 0x58, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x58, evict_way: x
+[DEBUG] Memory request for address 0x58, evict_way: x
+[MISS] Address: 0x5c
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MISS] Address: 0x60
+
+[TEST] Sending read request for address 0x64
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MISS] Address: 0x64
+
+[TEST] Sending read request for address 0x68
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MISS] Address: 0x68
+
+[TEST] Sending read request for address 0x6c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x68, evict_way: x
+[DEBUG] Memory request for address 0x68, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x68, evict_way: x
+[DEBUG] Memory request for address 0x68, evict_way: x
+[MISS] Address: 0x6c
+
+[TEST] Sending read request for address 0x70
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MISS] Address: 0x70
+
+[TEST] Sending read request for address 0x74
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x70, evict_way: x
+[DEBUG] Memory request for address 0x70, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x70, evict_way: x
+[DEBUG] Memory request for address 0x70, evict_way: x
+[MISS] Address: 0x74
+
+[TEST] Sending read request for address 0x78
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MISS] Address: 0x78
+
+[TEST] Sending read request for address 0x7c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x78, evict_way: x
+[DEBUG] Memory request for address 0x78, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x78, evict_way: x
+[DEBUG] Memory request for address 0x78, evict_way: x
+[MISS] Address: 0x7c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 32, Hit Rate: 0.00%
+==================
+
+[PASS] No hits during cache fill
+
+=== TEST 2: Cache Hits ===
+
+[TEST] Sending read request for address 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MISS] Address: 0x8
+
+[TEST] Sending read request for address 0xc
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MISS] Address: 0x10
+
+[TEST] Sending read request for address 0x14
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MISS] Address: 0x18
+
+[TEST] Sending read request for address 0x1c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x24
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MISS] Address: 0x28
+
+[TEST] Sending read request for address 0x2c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MISS] Address: 0x30
+
+[TEST] Sending read request for address 0x34
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MISS] Address: 0x38
+
+[TEST] Sending read request for address 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MISS] Address: 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 16, Hit Rate: 0.00%
+==================
+
+[FAIL] No cache hits
+
+=== TEST 3: PLRU Eviction Policy ===
+Filling set 0
+
+[TEST] Sending read request for address 0xx
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MISS] Address: 0xx
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0xx
+[DEBUG] Memory request for address 0xx, evict_way: x
+[DEBUG] Memory request for address 0xx, evict_way: x
+[MEMORY] Response data: 0xx
+[DEBUG] Memory request for address 0xx, evict_way: x
+[DEBUG] Memory request for address 0xx, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x40
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MISS] Address: 0x60
+Accessing different addresses in set 0 to update PLRU
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x1
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x1
+
+[TEST] Sending read request for address 0x2
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MISS] Address: 0x2
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2, evict_way: x
+[DEBUG] Memory request for address 0x2, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2, evict_way: x
+[DEBUG] Memory request for address 0x2, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x1
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x1
+Causing miss - should evict way 3 (least recently used)
+
+[TEST] Sending read request for address 0x3
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MISS] Address: 0x3
+
+=== Cache State ===
+Hits: 0, Misses: 10, Hit Rate: 0.00%
+==================
+
+
+=== TEST 4: Data Consistency ===
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x3
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x3
+
+=== Cache State ===
+Hits: 0, Misses: 2, Hit Rate: 0.00%
+==================
+
+
+=== TEST 6: PLRU Stress Test ===
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+
+[TEST] Sending read request for address 0xc
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+
+[TEST] Sending read request for address 0x14
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+
+[TEST] Sending read request for address 0x1c
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+
+[TEST] Sending read request for address 0x24
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+
+[TEST] Sending read request for address 0x2c
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+
+[TEST] Sending read request for address 0x34
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+
+[TEST] Sending read request for address 0x3c
+[MISS] Address: 0x3c
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+
+[TEST] Sending read request for address 0x44
+[MISS] Address: 0x44
+
+[TEST] Sending read request for address 0x48
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+
+[TEST] Sending read request for address 0x4c
+[MISS] Address: 0x4c
+
+[TEST] Sending read request for address 0x50
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+
+[TEST] Sending read request for address 0x54
+[MISS] Address: 0x54
+
+[TEST] Sending read request for address 0x58
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+
+[TEST] Sending read request for address 0x5c
+[MISS] Address: 0x5c
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+
+[TEST] Sending read request for address 0x64
+[MISS] Address: 0x64
+
+[TEST] Sending read request for address 0x68
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+
+[TEST] Sending read request for address 0x6c
+[MISS] Address: 0x6c
+
+[TEST] Sending read request for address 0x70
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+
+[TEST] Sending read request for address 0x74
+[MISS] Address: 0x74
+
+[TEST] Sending read request for address 0x78
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+
+[TEST] Sending read request for address 0x7c
+[MISS] Address: 0x7c
+
+[TEST] Sending read request for address 0x80
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+
+[TEST] Sending read request for address 0x84
+[MISS] Address: 0x84
+
+[TEST] Sending read request for address 0x88
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x84, evict_way: x
+[DEBUG] Memory request for address 0x84, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x84, evict_way: x
+[DEBUG] Memory request for address 0x84, evict_way: x
+
+[TEST] Sending read request for address 0x8c
+[MISS] Address: 0x8c
+
+[TEST] Sending read request for address 0x90
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[DEBUG] Memory request for address 0x8c, evict_way: x
+
+[TEST] Sending read request for address 0x94
+[MISS] Address: 0x94
+
+[TEST] Sending read request for address 0x98
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x94, evict_way: x
+[DEBUG] Memory request for address 0x94, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x94, evict_way: x
+[DEBUG] Memory request for address 0x94, evict_way: x
+
+[TEST] Sending read request for address 0x9c
+[MISS] Address: 0x9c
+
+[TEST] Sending read request for address 0xa0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[DEBUG] Memory request for address 0x9c, evict_way: x
+
+[TEST] Sending read request for address 0xa4
+[MISS] Address: 0xa4
+
+[TEST] Sending read request for address 0xa8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[DEBUG] Memory request for address 0xa4, evict_way: x
+
+[TEST] Sending read request for address 0xac
+[MISS] Address: 0xac
+
+[TEST] Sending read request for address 0xb0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xac, evict_way: x
+[DEBUG] Memory request for address 0xac, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xac, evict_way: x
+[DEBUG] Memory request for address 0xac, evict_way: x
+
+[TEST] Sending read request for address 0xb4
+[MISS] Address: 0xb4
+
+[TEST] Sending read request for address 0xb8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[DEBUG] Memory request for address 0xb4, evict_way: x
+
+[TEST] Sending read request for address 0xbc
+[MISS] Address: 0xbc
+
+[TEST] Sending read request for address 0xc0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[DEBUG] Memory request for address 0xbc, evict_way: x
+
+[TEST] Sending read request for address 0xc4
+[MISS] Address: 0xc4
+
+[TEST] Sending read request for address 0xc8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[DEBUG] Memory request for address 0xc4, evict_way: x
+
+[TEST] Sending read request for address 0xcc
+[MISS] Address: 0xcc
+
+[TEST] Sending read request for address 0xd0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[DEBUG] Memory request for address 0xcc, evict_way: x
+
+[TEST] Sending read request for address 0xd4
+[MISS] Address: 0xd4
+
+[TEST] Sending read request for address 0xd8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[DEBUG] Memory request for address 0xd4, evict_way: x
+
+[TEST] Sending read request for address 0xdc
+[MISS] Address: 0xdc
+
+[TEST] Sending read request for address 0xe0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[DEBUG] Memory request for address 0xdc, evict_way: x
+
+[TEST] Sending read request for address 0xe4
+[MISS] Address: 0xe4
+
+[TEST] Sending read request for address 0xe8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[DEBUG] Memory request for address 0xe4, evict_way: x
+
+[TEST] Sending read request for address 0xec
+[MISS] Address: 0xec
+
+[TEST] Sending read request for address 0xf0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xec, evict_way: x
+[DEBUG] Memory request for address 0xec, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xec, evict_way: x
+[DEBUG] Memory request for address 0xec, evict_way: x
+
+[TEST] Sending read request for address 0xf4
+[MISS] Address: 0xf4
+
+[TEST] Sending read request for address 0xf8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[DEBUG] Memory request for address 0xf4, evict_way: x
+
+[TEST] Sending read request for address 0xfc
+[MISS] Address: 0xfc
+
+[TEST] Sending read request for address 0x100
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[DEBUG] Memory request for address 0xfc, evict_way: x
+
+[TEST] Sending read request for address 0x104
+[MISS] Address: 0x104
+
+[TEST] Sending read request for address 0x108
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x104, evict_way: x
+[DEBUG] Memory request for address 0x104, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x104, evict_way: x
+[DEBUG] Memory request for address 0x104, evict_way: x
+
+[TEST] Sending read request for address 0x10c
+[MISS] Address: 0x10c
+
+[TEST] Sending read request for address 0x110
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[DEBUG] Memory request for address 0x10c, evict_way: x
+
+[TEST] Sending read request for address 0x114
+[MISS] Address: 0x114
+
+[TEST] Sending read request for address 0x118
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x114, evict_way: x
+[DEBUG] Memory request for address 0x114, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x114, evict_way: x
+[DEBUG] Memory request for address 0x114, evict_way: x
+
+[TEST] Sending read request for address 0x11c
+[MISS] Address: 0x11c
+
+[TEST] Sending read request for address 0x120
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[DEBUG] Memory request for address 0x11c, evict_way: x
+
+[TEST] Sending read request for address 0x124
+[MISS] Address: 0x124
+
+[TEST] Sending read request for address 0x128
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x124, evict_way: x
+[DEBUG] Memory request for address 0x124, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x124, evict_way: x
+[DEBUG] Memory request for address 0x124, evict_way: x
+
+[TEST] Sending read request for address 0x12c
+[MISS] Address: 0x12c
+
+[TEST] Sending read request for address 0x130
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[DEBUG] Memory request for address 0x12c, evict_way: x
+
+[TEST] Sending read request for address 0x134
+[MISS] Address: 0x134
+
+[TEST] Sending read request for address 0x138
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x134, evict_way: x
+[DEBUG] Memory request for address 0x134, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x134, evict_way: x
+[DEBUG] Memory request for address 0x134, evict_way: x
+
+[TEST] Sending read request for address 0x13c
+[MISS] Address: 0x13c
+
+[TEST] Sending read request for address 0x140
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[DEBUG] Memory request for address 0x13c, evict_way: x
+
+[TEST] Sending read request for address 0x144
+[MISS] Address: 0x144
+
+[TEST] Sending read request for address 0x148
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x144, evict_way: x
+[DEBUG] Memory request for address 0x144, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x144, evict_way: x
+[DEBUG] Memory request for address 0x144, evict_way: x
+
+[TEST] Sending read request for address 0x14c
+[MISS] Address: 0x14c
+
+[TEST] Sending read request for address 0x150
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[DEBUG] Memory request for address 0x14c, evict_way: x
+
+[TEST] Sending read request for address 0x154
+[MISS] Address: 0x154
+
+[TEST] Sending read request for address 0x158
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x154, evict_way: x
+[DEBUG] Memory request for address 0x154, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x154, evict_way: x
+[DEBUG] Memory request for address 0x154, evict_way: x
+
+[TEST] Sending read request for address 0x15c
+[MISS] Address: 0x15c
+
+[TEST] Sending read request for address 0x160
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[DEBUG] Memory request for address 0x15c, evict_way: x
+
+[TEST] Sending read request for address 0x164
+[MISS] Address: 0x164
+
+[TEST] Sending read request for address 0x168
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x164, evict_way: x
+[DEBUG] Memory request for address 0x164, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x164, evict_way: x
+[DEBUG] Memory request for address 0x164, evict_way: x
+
+[TEST] Sending read request for address 0x16c
+[MISS] Address: 0x16c
+
+[TEST] Sending read request for address 0x170
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[DEBUG] Memory request for address 0x16c, evict_way: x
+
+[TEST] Sending read request for address 0x174
+[MISS] Address: 0x174
+
+[TEST] Sending read request for address 0x178
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x174, evict_way: x
+[DEBUG] Memory request for address 0x174, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x174, evict_way: x
+[DEBUG] Memory request for address 0x174, evict_way: x
+
+[TEST] Sending read request for address 0x17c
+[MISS] Address: 0x17c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x17c, evict_way: x
+[DEBUG] Memory request for address 0x17c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x17c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 49, Hit Rate: 0.00%
+==================
+
+
+=========================================
+Test Summary
+=========================================
+Total accesses: 49
+Final hit rate: 0.00%
+=========================================
+
+[DEBUG] Memory request for address 0x17c, evict_way: x
+Simulation complete via $finish(1) at time 7235 NS + 0
+../tb/tb_configure_cache.sv:249     $finish;
+xcelium> probe -create -shm tb_configure_cache.u_cache.addr_ff tb_configure_cache.u_cache.addr_for_ram tb_configure_cache.u_cache.aresetn_i tb_configure_cache.u_cache.clk_i tb_configure_cache.u_cache.cpu_addr_i tb_configure_cache.u_cache.cpu_read_handshake tb_configure_cache.u_cache.cpu_ready_o tb_configure_cache.u_cache.cpu_valid_i tb_configure_cache.u_cache.equal_tag_arr tb_configure_cache.u_cache.evict_way tb_configure_cache.u_cache.hit_arr tb_configure_cache.u_cache.hit_ff tb_configure_cache.u_cache.hit_o tb_configure_cache.u_cache.init_state_ram_cnt_ff tb_configure_cache.u_cache.input_tag tb_configure_cache.u_cache.mem_ack_i tb_configure_cache.u_cache.mem_addr_o tb_configure_cache.u_cache.mem_data_i tb_configure_cache.u_cache.mem_req_o tb_configure_cache.u_cache.mem_write_handshake tb_configure_cache.u_cache.next tb_configure_cache.u_cache.plru_calc_en tb_configure_cache.u_cache.plru_calc_valid_out tb_configure_cache.u_cache.plru_calc_valid_out_arr tb_configure_cache.u_cache.plru_ram tb_configure_cache.u_cache.plru_tree_ram tb_configure_cache.u_cache.plru_tree_ram_out tb_configure_cache.u_cache.plru_tree_ram_out_arr tb_configure_cache.u_cache.plru_wr_en tb_configure_cache.u_cache.read_data tb_configure_cache.u_cache.read_data_o tb_configure_cache.u_cache.read_data_status tb_configure_cache.u_cache.read_data_tag tb_configure_cache.u_cache.set tb_configure_cache.u_cache.set_ff tb_configure_cache.u_cache.state_ff tb_configure_cache.u_cache.state_ram_write_addr tb_configure_cache.u_cache.valid_o tb_configure_cache.u_cache.write_data_state_ram tb_configure_cache.u_cache.write_enable tb_configure_cache.u_cache.write_enable_state_ram
+Created default SHM database xcelium.shm
 Created probe 1
 xcelium> reset
-SVSEED set from command line: 12557
+SVSEED set from command line: 26171
 xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 Loaded snapshot worklib.tb_configure_cache_opt:sv
 xcelium> run
-Simulation complete via $finish(1) at time 85 NS + 1
-../tb/tb_configure_cache.sv:53     $finish();
+
+=========================================
+Starting Cache Testbench
+Configuration: 8 sets, 4 ways
+=========================================
+
+
+=== TEST 1: Cache Fill ===
+
+[TEST] Sending read request for address 0x0
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MISS] Address: 0x8
+
+[TEST] Sending read request for address 0xc
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MISS] Address: 0x10
+
+[TEST] Sending read request for address 0x14
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MISS] Address: 0x18
+
+[TEST] Sending read request for address 0x1c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x24
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MISS] Address: 0x28
+
+[TEST] Sending read request for address 0x2c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MISS] Address: 0x30
+
+[TEST] Sending read request for address 0x34
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MISS] Address: 0x38
+
+[TEST] Sending read request for address 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MISS] Address: 0x3c
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MISS] Address: 0x40
+
+[TEST] Sending read request for address 0x44
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MISS] Address: 0x44
+
+[TEST] Sending read request for address 0x48
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MISS] Address: 0x48
+
+[TEST] Sending read request for address 0x4c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x48, evict_way: x
+[DEBUG] Memory request for address 0x48, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x48, evict_way: x
+[DEBUG] Memory request for address 0x48, evict_way: x
+[MISS] Address: 0x4c
+
+[TEST] Sending read request for address 0x50
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MISS] Address: 0x50
+
+[TEST] Sending read request for address 0x54
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x50, evict_way: x
+[DEBUG] Memory request for address 0x50, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x50, evict_way: x
+[DEBUG] Memory request for address 0x50, evict_way: x
+[MISS] Address: 0x54
+
+[TEST] Sending read request for address 0x58
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MISS] Address: 0x58
+
+[TEST] Sending read request for address 0x5c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x58, evict_way: x
+[DEBUG] Memory request for address 0x58, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x58, evict_way: x
+[DEBUG] Memory request for address 0x58, evict_way: x
+[MISS] Address: 0x5c
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MISS] Address: 0x60
+
+[TEST] Sending read request for address 0x64
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MISS] Address: 0x64
+
+[TEST] Sending read request for address 0x68
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MISS] Address: 0x68
+
+[TEST] Sending read request for address 0x6c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x68, evict_way: x
+[DEBUG] Memory request for address 0x68, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x68, evict_way: x
+[DEBUG] Memory request for address 0x68, evict_way: x
+[MISS] Address: 0x6c
+
+[TEST] Sending read request for address 0x70
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MISS] Address: 0x70
+
+[TEST] Sending read request for address 0x74
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x70, evict_way: x
+[DEBUG] Memory request for address 0x70, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x70, evict_way: x
+[DEBUG] Memory request for address 0x70, evict_way: x
+[MISS] Address: 0x74
+
+[TEST] Sending read request for address 0x78
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MISS] Address: 0x78
+
+[TEST] Sending read request for address 0x7c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x78, evict_way: x
+[DEBUG] Memory request for address 0x78, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x78, evict_way: x
+[DEBUG] Memory request for address 0x78, evict_way: x
+[MISS] Address: 0x7c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 32, Hit Rate: 0.00%
+==================
+
+[PASS] No hits during cache fill
+
+=== TEST 2: Cache Hits ===
+
+[TEST] Sending read request for address 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MISS] Address: 0x8
+
+[TEST] Sending read request for address 0xc
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MISS] Address: 0x10
+
+[TEST] Sending read request for address 0x14
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MISS] Address: 0x18
+
+[TEST] Sending read request for address 0x1c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x24
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MISS] Address: 0x28
+
+[TEST] Sending read request for address 0x2c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MISS] Address: 0x30
+
+[TEST] Sending read request for address 0x34
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MISS] Address: 0x38
+
+[TEST] Sending read request for address 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MISS] Address: 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 16, Hit Rate: 0.00%
+==================
+
+[FAIL] No cache hits
+
+=== TEST 3: PLRU Eviction Policy ===
+Filling set 0
+
+[TEST] Sending read request for address 0xx
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MISS] Address: 0xx
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0xx
+[DEBUG] Memory request for address 0xx, evict_way: x
+[DEBUG] Memory request for address 0xx, evict_way: x
+[MEMORY] Response data: 0xx
+[DEBUG] Memory request for address 0xx, evict_way: x
+[DEBUG] Memory request for address 0xx, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x40
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MISS] Address: 0x60
+Accessing different addresses in set 0 to update PLRU
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x1
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x1
+
+[TEST] Sending read request for address 0x2
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MISS] Address: 0x2
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2, evict_way: x
+[DEBUG] Memory request for address 0x2, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2, evict_way: x
+[DEBUG] Memory request for address 0x2, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x1
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x1
+Causing miss - should evict way 3 (least recently used)
+
+[TEST] Sending read request for address 0x3
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MISS] Address: 0x3
+
+=== Cache State ===
+Hits: 0, Misses: 10, Hit Rate: 0.00%
+==================
+
+
+=== TEST 4: Data Consistency ===
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x3
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x3
+
+=== Cache State ===
+Hits: 0, Misses: 2, Hit Rate: 0.00%
+==================
+
+
+=== TEST 6: PLRU Stress Test ===
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+
+[TEST] Sending read request for address 0xc
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+
+[TEST] Sending read request for address 0x14
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+
+[TEST] Sending read request for address 0x1c
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+
+[TEST] Sending read request for address 0x24
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+
+[TEST] Sending read request for address 0x2c
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+
+[TEST] Sending read request for address 0x34
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+
+[TEST] Sending read request for address 0x3c
+[MISS] Address: 0x3c
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+
+[TEST] Sending read request for address 0x44
+[MISS] Address: 0x44
+
+[TEST] Sending read request for address 0x48
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+
+[TEST] Sending read request for address 0x4c
+[MISS] Address: 0x4c
+
+[TEST] Sending read request for address 0x50
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+
+[TEST] Sending read request for address 0x54
+[MISS] Address: 0x54
+
+[TEST] Sending read request for address 0x58
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+
+[TEST] Sending read request for address 0x5c
+[MISS] Address: 0x5c
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+
+[TEST] Sending read request for address 0x64
+[MISS] Address: 0x64
+
+[TEST] Sending read request for address 0x68
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+
+[TEST] Sending read request for address 0x6c
+[MISS] Address: 0x6c
+
+[TEST] Sending read request for address 0x70
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+
+[TEST] Sending read request for address 0x74
+[MISS] Address: 0x74
+
+[TEST] Sending read request for address 0x78
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+
+[TEST] Sending read request for address 0x7c
+[MISS] Address: 0x7c
+
+[TEST] Sending read request for address 0x80
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+
+[TEST] Sending read request for address 0x84
+[MISS] Address: 0x84
+
+[TEST] Sending read request for address 0x88
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x84, evict_way: x
+[DEBUG] Memory request for address 0x84, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x84, evict_way: x
+[DEBUG] Memory request for address 0x84, evict_way: x
+
+[TEST] Sending read request for address 0x8c
+[MISS] Address: 0x8c
+
+[TEST] Sending read request for address 0x90
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[DEBUG] Memory request for address 0x8c, evict_way: x
+
+[TEST] Sending read request for address 0x94
+[MISS] Address: 0x94
+
+[TEST] Sending read request for address 0x98
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x94, evict_way: x
+[DEBUG] Memory request for address 0x94, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x94, evict_way: x
+[DEBUG] Memory request for address 0x94, evict_way: x
+
+[TEST] Sending read request for address 0x9c
+[MISS] Address: 0x9c
+
+[TEST] Sending read request for address 0xa0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[DEBUG] Memory request for address 0x9c, evict_way: x
+
+[TEST] Sending read request for address 0xa4
+[MISS] Address: 0xa4
+
+[TEST] Sending read request for address 0xa8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[DEBUG] Memory request for address 0xa4, evict_way: x
+
+[TEST] Sending read request for address 0xac
+[MISS] Address: 0xac
+
+[TEST] Sending read request for address 0xb0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xac, evict_way: x
+[DEBUG] Memory request for address 0xac, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xac, evict_way: x
+[DEBUG] Memory request for address 0xac, evict_way: x
+
+[TEST] Sending read request for address 0xb4
+[MISS] Address: 0xb4
+
+[TEST] Sending read request for address 0xb8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[DEBUG] Memory request for address 0xb4, evict_way: x
+
+[TEST] Sending read request for address 0xbc
+[MISS] Address: 0xbc
+
+[TEST] Sending read request for address 0xc0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[DEBUG] Memory request for address 0xbc, evict_way: x
+
+[TEST] Sending read request for address 0xc4
+[MISS] Address: 0xc4
+
+[TEST] Sending read request for address 0xc8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[DEBUG] Memory request for address 0xc4, evict_way: x
+
+[TEST] Sending read request for address 0xcc
+[MISS] Address: 0xcc
+
+[TEST] Sending read request for address 0xd0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[DEBUG] Memory request for address 0xcc, evict_way: x
+
+[TEST] Sending read request for address 0xd4
+[MISS] Address: 0xd4
+
+[TEST] Sending read request for address 0xd8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[DEBUG] Memory request for address 0xd4, evict_way: x
+
+[TEST] Sending read request for address 0xdc
+[MISS] Address: 0xdc
+
+[TEST] Sending read request for address 0xe0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[DEBUG] Memory request for address 0xdc, evict_way: x
+
+[TEST] Sending read request for address 0xe4
+[MISS] Address: 0xe4
+
+[TEST] Sending read request for address 0xe8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[DEBUG] Memory request for address 0xe4, evict_way: x
+
+[TEST] Sending read request for address 0xec
+[MISS] Address: 0xec
+
+[TEST] Sending read request for address 0xf0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xec, evict_way: x
+[DEBUG] Memory request for address 0xec, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xec, evict_way: x
+[DEBUG] Memory request for address 0xec, evict_way: x
+
+[TEST] Sending read request for address 0xf4
+[MISS] Address: 0xf4
+
+[TEST] Sending read request for address 0xf8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[DEBUG] Memory request for address 0xf4, evict_way: x
+
+[TEST] Sending read request for address 0xfc
+[MISS] Address: 0xfc
+
+[TEST] Sending read request for address 0x100
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[DEBUG] Memory request for address 0xfc, evict_way: x
+
+[TEST] Sending read request for address 0x104
+[MISS] Address: 0x104
+
+[TEST] Sending read request for address 0x108
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x104, evict_way: x
+[DEBUG] Memory request for address 0x104, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x104, evict_way: x
+[DEBUG] Memory request for address 0x104, evict_way: x
+
+[TEST] Sending read request for address 0x10c
+[MISS] Address: 0x10c
+
+[TEST] Sending read request for address 0x110
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[DEBUG] Memory request for address 0x10c, evict_way: x
+
+[TEST] Sending read request for address 0x114
+[MISS] Address: 0x114
+
+[TEST] Sending read request for address 0x118
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x114, evict_way: x
+[DEBUG] Memory request for address 0x114, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x114, evict_way: x
+[DEBUG] Memory request for address 0x114, evict_way: x
+
+[TEST] Sending read request for address 0x11c
+[MISS] Address: 0x11c
+
+[TEST] Sending read request for address 0x120
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[DEBUG] Memory request for address 0x11c, evict_way: x
+
+[TEST] Sending read request for address 0x124
+[MISS] Address: 0x124
+
+[TEST] Sending read request for address 0x128
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x124, evict_way: x
+[DEBUG] Memory request for address 0x124, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x124, evict_way: x
+[DEBUG] Memory request for address 0x124, evict_way: x
+
+[TEST] Sending read request for address 0x12c
+[MISS] Address: 0x12c
+
+[TEST] Sending read request for address 0x130
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[DEBUG] Memory request for address 0x12c, evict_way: x
+
+[TEST] Sending read request for address 0x134
+[MISS] Address: 0x134
+
+[TEST] Sending read request for address 0x138
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x134, evict_way: x
+[DEBUG] Memory request for address 0x134, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x134, evict_way: x
+[DEBUG] Memory request for address 0x134, evict_way: x
+
+[TEST] Sending read request for address 0x13c
+[MISS] Address: 0x13c
+
+[TEST] Sending read request for address 0x140
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[DEBUG] Memory request for address 0x13c, evict_way: x
+
+[TEST] Sending read request for address 0x144
+[MISS] Address: 0x144
+
+[TEST] Sending read request for address 0x148
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x144, evict_way: x
+[DEBUG] Memory request for address 0x144, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x144, evict_way: x
+[DEBUG] Memory request for address 0x144, evict_way: x
+
+[TEST] Sending read request for address 0x14c
+[MISS] Address: 0x14c
+
+[TEST] Sending read request for address 0x150
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[DEBUG] Memory request for address 0x14c, evict_way: x
+
+[TEST] Sending read request for address 0x154
+[MISS] Address: 0x154
+
+[TEST] Sending read request for address 0x158
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x154, evict_way: x
+[DEBUG] Memory request for address 0x154, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x154, evict_way: x
+[DEBUG] Memory request for address 0x154, evict_way: x
+
+[TEST] Sending read request for address 0x15c
+[MISS] Address: 0x15c
+
+[TEST] Sending read request for address 0x160
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[DEBUG] Memory request for address 0x15c, evict_way: x
+
+[TEST] Sending read request for address 0x164
+[MISS] Address: 0x164
+
+[TEST] Sending read request for address 0x168
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x164, evict_way: x
+[DEBUG] Memory request for address 0x164, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x164, evict_way: x
+[DEBUG] Memory request for address 0x164, evict_way: x
+
+[TEST] Sending read request for address 0x16c
+[MISS] Address: 0x16c
+
+[TEST] Sending read request for address 0x170
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[DEBUG] Memory request for address 0x16c, evict_way: x
+
+[TEST] Sending read request for address 0x174
+[MISS] Address: 0x174
+
+[TEST] Sending read request for address 0x178
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x174, evict_way: x
+[DEBUG] Memory request for address 0x174, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x174, evict_way: x
+[DEBUG] Memory request for address 0x174, evict_way: x
+
+[TEST] Sending read request for address 0x17c
+[MISS] Address: 0x17c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x17c, evict_way: x
+[DEBUG] Memory request for address 0x17c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x17c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 49, Hit Rate: 0.00%
+==================
+
+
+=========================================
+Test Summary
+=========================================
+Total accesses: 49
+Final hit rate: 0.00%
+=========================================
+
+[DEBUG] Memory request for address 0x17c, evict_way: x
+Simulation complete via $finish(1) at time 7235 NS + 0
+../tb/tb_configure_cache.sv:249     $finish;
+xcelium> probe -create -shm tb_configure_cache.external_memory
+Created probe 2
+xcelium> reset
+SVSEED set from command line: 26171
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+Loaded snapshot worklib.tb_configure_cache_opt:sv
+xcelium> run
+
+=========================================
+Starting Cache Testbench
+Configuration: 8 sets, 4 ways
+=========================================
+
+
+=== TEST 1: Cache Fill ===
+
+[TEST] Sending read request for address 0x0
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MISS] Address: 0x8
+
+[TEST] Sending read request for address 0xc
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MISS] Address: 0x10
+
+[TEST] Sending read request for address 0x14
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MISS] Address: 0x18
+
+[TEST] Sending read request for address 0x1c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x24
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MISS] Address: 0x28
+
+[TEST] Sending read request for address 0x2c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MISS] Address: 0x30
+
+[TEST] Sending read request for address 0x34
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MISS] Address: 0x38
+
+[TEST] Sending read request for address 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MISS] Address: 0x3c
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MISS] Address: 0x40
+
+[TEST] Sending read request for address 0x44
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MISS] Address: 0x44
+
+[TEST] Sending read request for address 0x48
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MISS] Address: 0x48
+
+[TEST] Sending read request for address 0x4c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x48, evict_way: x
+[DEBUG] Memory request for address 0x48, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x48, evict_way: x
+[DEBUG] Memory request for address 0x48, evict_way: x
+[MISS] Address: 0x4c
+
+[TEST] Sending read request for address 0x50
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MISS] Address: 0x50
+
+[TEST] Sending read request for address 0x54
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x50, evict_way: x
+[DEBUG] Memory request for address 0x50, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x50, evict_way: x
+[DEBUG] Memory request for address 0x50, evict_way: x
+[MISS] Address: 0x54
+
+[TEST] Sending read request for address 0x58
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MISS] Address: 0x58
+
+[TEST] Sending read request for address 0x5c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x58, evict_way: x
+[DEBUG] Memory request for address 0x58, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x58, evict_way: x
+[DEBUG] Memory request for address 0x58, evict_way: x
+[MISS] Address: 0x5c
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MISS] Address: 0x60
+
+[TEST] Sending read request for address 0x64
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MISS] Address: 0x64
+
+[TEST] Sending read request for address 0x68
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MISS] Address: 0x68
+
+[TEST] Sending read request for address 0x6c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x68, evict_way: x
+[DEBUG] Memory request for address 0x68, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x68, evict_way: x
+[DEBUG] Memory request for address 0x68, evict_way: x
+[MISS] Address: 0x6c
+
+[TEST] Sending read request for address 0x70
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MISS] Address: 0x70
+
+[TEST] Sending read request for address 0x74
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x70, evict_way: x
+[DEBUG] Memory request for address 0x70, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x70, evict_way: x
+[DEBUG] Memory request for address 0x70, evict_way: x
+[MISS] Address: 0x74
+
+[TEST] Sending read request for address 0x78
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MISS] Address: 0x78
+
+[TEST] Sending read request for address 0x7c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x78, evict_way: x
+[DEBUG] Memory request for address 0x78, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x78, evict_way: x
+[DEBUG] Memory request for address 0x78, evict_way: x
+[MISS] Address: 0x7c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 32, Hit Rate: 0.00%
+==================
+
+[PASS] No hits during cache fill
+
+=== TEST 2: Cache Hits ===
+
+[TEST] Sending read request for address 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MISS] Address: 0x8
+
+[TEST] Sending read request for address 0xc
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8, evict_way: x
+[DEBUG] Memory request for address 0x8, evict_way: x
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MISS] Address: 0x10
+
+[TEST] Sending read request for address 0x14
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10, evict_way: x
+[DEBUG] Memory request for address 0x10, evict_way: x
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MISS] Address: 0x18
+
+[TEST] Sending read request for address 0x1c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x18, evict_way: x
+[DEBUG] Memory request for address 0x18, evict_way: x
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x24
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MISS] Address: 0x28
+
+[TEST] Sending read request for address 0x2c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x28, evict_way: x
+[DEBUG] Memory request for address 0x28, evict_way: x
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MISS] Address: 0x30
+
+[TEST] Sending read request for address 0x34
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x30, evict_way: x
+[DEBUG] Memory request for address 0x30, evict_way: x
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MISS] Address: 0x38
+
+[TEST] Sending read request for address 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x38, evict_way: x
+[DEBUG] Memory request for address 0x38, evict_way: x
+[MISS] Address: 0x3c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 16, Hit Rate: 0.00%
+==================
+
+[FAIL] No cache hits
+
+=== TEST 3: PLRU Eviction Policy ===
+Filling set 0
+
+[TEST] Sending read request for address 0xx
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MISS] Address: 0xx
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0xx
+[DEBUG] Memory request for address 0xx, evict_way: x
+[DEBUG] Memory request for address 0xx, evict_way: x
+[MEMORY] Response data: 0xx
+[DEBUG] Memory request for address 0xx, evict_way: x
+[DEBUG] Memory request for address 0xx, evict_way: x
+[MISS] Address: 0x20
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x20, evict_way: x
+[DEBUG] Memory request for address 0x20, evict_way: x
+[MISS] Address: 0x40
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x40, evict_way: x
+[DEBUG] Memory request for address 0x40, evict_way: x
+[MISS] Address: 0x60
+Accessing different addresses in set 0 to update PLRU
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x60, evict_way: x
+[DEBUG] Memory request for address 0x60, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x1
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x1
+
+[TEST] Sending read request for address 0x2
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MISS] Address: 0x2
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2, evict_way: x
+[DEBUG] Memory request for address 0x2, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2, evict_way: x
+[DEBUG] Memory request for address 0x2, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x1
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x1
+Causing miss - should evict way 3 (least recently used)
+
+[TEST] Sending read request for address 0x3
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x1, evict_way: x
+[DEBUG] Memory request for address 0x1, evict_way: x
+[MISS] Address: 0x3
+
+=== Cache State ===
+Hits: 0, Misses: 10, Hit Rate: 0.00%
+==================
+
+
+=== TEST 4: Data Consistency ===
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x3
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x3
+
+=== Cache State ===
+Hits: 0, Misses: 2, Hit Rate: 0.00%
+==================
+
+
+=== TEST 6: PLRU Stress Test ===
+
+[TEST] Sending read request for address 0x0
+[MEMORY] Request at address: 0x1
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MEMORY] Response data: 0x1001
+[DEBUG] Memory request for address 0x3, evict_way: x
+[DEBUG] Memory request for address 0x3, evict_way: x
+[MISS] Address: 0x0
+
+[TEST] Sending read request for address 0x4
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x0, evict_way: x
+[DEBUG] Memory request for address 0x0, evict_way: x
+[MISS] Address: 0x4
+
+[TEST] Sending read request for address 0x8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4, evict_way: x
+[DEBUG] Memory request for address 0x4, evict_way: x
+
+[TEST] Sending read request for address 0xc
+[MISS] Address: 0xc
+
+[TEST] Sending read request for address 0x10
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc, evict_way: x
+[DEBUG] Memory request for address 0xc, evict_way: x
+
+[TEST] Sending read request for address 0x14
+[MISS] Address: 0x14
+
+[TEST] Sending read request for address 0x18
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14, evict_way: x
+[DEBUG] Memory request for address 0x14, evict_way: x
+
+[TEST] Sending read request for address 0x1c
+[MISS] Address: 0x1c
+
+[TEST] Sending read request for address 0x20
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x1c, evict_way: x
+[DEBUG] Memory request for address 0x1c, evict_way: x
+
+[TEST] Sending read request for address 0x24
+[MISS] Address: 0x24
+
+[TEST] Sending read request for address 0x28
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x24, evict_way: x
+[DEBUG] Memory request for address 0x24, evict_way: x
+
+[TEST] Sending read request for address 0x2c
+[MISS] Address: 0x2c
+
+[TEST] Sending read request for address 0x30
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x2c, evict_way: x
+[DEBUG] Memory request for address 0x2c, evict_way: x
+
+[TEST] Sending read request for address 0x34
+[MISS] Address: 0x34
+
+[TEST] Sending read request for address 0x38
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x34, evict_way: x
+[DEBUG] Memory request for address 0x34, evict_way: x
+
+[TEST] Sending read request for address 0x3c
+[MISS] Address: 0x3c
+
+[TEST] Sending read request for address 0x40
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x3c, evict_way: x
+[DEBUG] Memory request for address 0x3c, evict_way: x
+
+[TEST] Sending read request for address 0x44
+[MISS] Address: 0x44
+
+[TEST] Sending read request for address 0x48
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x44, evict_way: x
+[DEBUG] Memory request for address 0x44, evict_way: x
+
+[TEST] Sending read request for address 0x4c
+[MISS] Address: 0x4c
+
+[TEST] Sending read request for address 0x50
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x4c, evict_way: x
+[DEBUG] Memory request for address 0x4c, evict_way: x
+
+[TEST] Sending read request for address 0x54
+[MISS] Address: 0x54
+
+[TEST] Sending read request for address 0x58
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x54, evict_way: x
+[DEBUG] Memory request for address 0x54, evict_way: x
+
+[TEST] Sending read request for address 0x5c
+[MISS] Address: 0x5c
+
+[TEST] Sending read request for address 0x60
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x5c, evict_way: x
+[DEBUG] Memory request for address 0x5c, evict_way: x
+
+[TEST] Sending read request for address 0x64
+[MISS] Address: 0x64
+
+[TEST] Sending read request for address 0x68
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x64, evict_way: x
+[DEBUG] Memory request for address 0x64, evict_way: x
+
+[TEST] Sending read request for address 0x6c
+[MISS] Address: 0x6c
+
+[TEST] Sending read request for address 0x70
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x6c, evict_way: x
+[DEBUG] Memory request for address 0x6c, evict_way: x
+
+[TEST] Sending read request for address 0x74
+[MISS] Address: 0x74
+
+[TEST] Sending read request for address 0x78
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x74, evict_way: x
+[DEBUG] Memory request for address 0x74, evict_way: x
+
+[TEST] Sending read request for address 0x7c
+[MISS] Address: 0x7c
+
+[TEST] Sending read request for address 0x80
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x7c, evict_way: x
+[DEBUG] Memory request for address 0x7c, evict_way: x
+
+[TEST] Sending read request for address 0x84
+[MISS] Address: 0x84
+
+[TEST] Sending read request for address 0x88
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x84, evict_way: x
+[DEBUG] Memory request for address 0x84, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x84, evict_way: x
+[DEBUG] Memory request for address 0x84, evict_way: x
+
+[TEST] Sending read request for address 0x8c
+[MISS] Address: 0x8c
+
+[TEST] Sending read request for address 0x90
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x8c, evict_way: x
+[DEBUG] Memory request for address 0x8c, evict_way: x
+
+[TEST] Sending read request for address 0x94
+[MISS] Address: 0x94
+
+[TEST] Sending read request for address 0x98
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x94, evict_way: x
+[DEBUG] Memory request for address 0x94, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x94, evict_way: x
+[DEBUG] Memory request for address 0x94, evict_way: x
+
+[TEST] Sending read request for address 0x9c
+[MISS] Address: 0x9c
+
+[TEST] Sending read request for address 0xa0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x9c, evict_way: x
+[DEBUG] Memory request for address 0x9c, evict_way: x
+
+[TEST] Sending read request for address 0xa4
+[MISS] Address: 0xa4
+
+[TEST] Sending read request for address 0xa8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xa4, evict_way: x
+[DEBUG] Memory request for address 0xa4, evict_way: x
+
+[TEST] Sending read request for address 0xac
+[MISS] Address: 0xac
+
+[TEST] Sending read request for address 0xb0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xac, evict_way: x
+[DEBUG] Memory request for address 0xac, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xac, evict_way: x
+[DEBUG] Memory request for address 0xac, evict_way: x
+
+[TEST] Sending read request for address 0xb4
+[MISS] Address: 0xb4
+
+[TEST] Sending read request for address 0xb8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xb4, evict_way: x
+[DEBUG] Memory request for address 0xb4, evict_way: x
+
+[TEST] Sending read request for address 0xbc
+[MISS] Address: 0xbc
+
+[TEST] Sending read request for address 0xc0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xbc, evict_way: x
+[DEBUG] Memory request for address 0xbc, evict_way: x
+
+[TEST] Sending read request for address 0xc4
+[MISS] Address: 0xc4
+
+[TEST] Sending read request for address 0xc8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xc4, evict_way: x
+[DEBUG] Memory request for address 0xc4, evict_way: x
+
+[TEST] Sending read request for address 0xcc
+[MISS] Address: 0xcc
+
+[TEST] Sending read request for address 0xd0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xcc, evict_way: x
+[DEBUG] Memory request for address 0xcc, evict_way: x
+
+[TEST] Sending read request for address 0xd4
+[MISS] Address: 0xd4
+
+[TEST] Sending read request for address 0xd8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xd4, evict_way: x
+[DEBUG] Memory request for address 0xd4, evict_way: x
+
+[TEST] Sending read request for address 0xdc
+[MISS] Address: 0xdc
+
+[TEST] Sending read request for address 0xe0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xdc, evict_way: x
+[DEBUG] Memory request for address 0xdc, evict_way: x
+
+[TEST] Sending read request for address 0xe4
+[MISS] Address: 0xe4
+
+[TEST] Sending read request for address 0xe8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xe4, evict_way: x
+[DEBUG] Memory request for address 0xe4, evict_way: x
+
+[TEST] Sending read request for address 0xec
+[MISS] Address: 0xec
+
+[TEST] Sending read request for address 0xf0
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xec, evict_way: x
+[DEBUG] Memory request for address 0xec, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xec, evict_way: x
+[DEBUG] Memory request for address 0xec, evict_way: x
+
+[TEST] Sending read request for address 0xf4
+[MISS] Address: 0xf4
+
+[TEST] Sending read request for address 0xf8
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xf4, evict_way: x
+[DEBUG] Memory request for address 0xf4, evict_way: x
+
+[TEST] Sending read request for address 0xfc
+[MISS] Address: 0xfc
+
+[TEST] Sending read request for address 0x100
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0xfc, evict_way: x
+[DEBUG] Memory request for address 0xfc, evict_way: x
+
+[TEST] Sending read request for address 0x104
+[MISS] Address: 0x104
+
+[TEST] Sending read request for address 0x108
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x104, evict_way: x
+[DEBUG] Memory request for address 0x104, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x104, evict_way: x
+[DEBUG] Memory request for address 0x104, evict_way: x
+
+[TEST] Sending read request for address 0x10c
+[MISS] Address: 0x10c
+
+[TEST] Sending read request for address 0x110
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x10c, evict_way: x
+[DEBUG] Memory request for address 0x10c, evict_way: x
+
+[TEST] Sending read request for address 0x114
+[MISS] Address: 0x114
+
+[TEST] Sending read request for address 0x118
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x114, evict_way: x
+[DEBUG] Memory request for address 0x114, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x114, evict_way: x
+[DEBUG] Memory request for address 0x114, evict_way: x
+
+[TEST] Sending read request for address 0x11c
+[MISS] Address: 0x11c
+
+[TEST] Sending read request for address 0x120
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x11c, evict_way: x
+[DEBUG] Memory request for address 0x11c, evict_way: x
+
+[TEST] Sending read request for address 0x124
+[MISS] Address: 0x124
+
+[TEST] Sending read request for address 0x128
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x124, evict_way: x
+[DEBUG] Memory request for address 0x124, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x124, evict_way: x
+[DEBUG] Memory request for address 0x124, evict_way: x
+
+[TEST] Sending read request for address 0x12c
+[MISS] Address: 0x12c
+
+[TEST] Sending read request for address 0x130
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x12c, evict_way: x
+[DEBUG] Memory request for address 0x12c, evict_way: x
+
+[TEST] Sending read request for address 0x134
+[MISS] Address: 0x134
+
+[TEST] Sending read request for address 0x138
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x134, evict_way: x
+[DEBUG] Memory request for address 0x134, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x134, evict_way: x
+[DEBUG] Memory request for address 0x134, evict_way: x
+
+[TEST] Sending read request for address 0x13c
+[MISS] Address: 0x13c
+
+[TEST] Sending read request for address 0x140
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x13c, evict_way: x
+[DEBUG] Memory request for address 0x13c, evict_way: x
+
+[TEST] Sending read request for address 0x144
+[MISS] Address: 0x144
+
+[TEST] Sending read request for address 0x148
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x144, evict_way: x
+[DEBUG] Memory request for address 0x144, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x144, evict_way: x
+[DEBUG] Memory request for address 0x144, evict_way: x
+
+[TEST] Sending read request for address 0x14c
+[MISS] Address: 0x14c
+
+[TEST] Sending read request for address 0x150
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x14c, evict_way: x
+[DEBUG] Memory request for address 0x14c, evict_way: x
+
+[TEST] Sending read request for address 0x154
+[MISS] Address: 0x154
+
+[TEST] Sending read request for address 0x158
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x154, evict_way: x
+[DEBUG] Memory request for address 0x154, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x154, evict_way: x
+[DEBUG] Memory request for address 0x154, evict_way: x
+
+[TEST] Sending read request for address 0x15c
+[MISS] Address: 0x15c
+
+[TEST] Sending read request for address 0x160
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x15c, evict_way: x
+[DEBUG] Memory request for address 0x15c, evict_way: x
+
+[TEST] Sending read request for address 0x164
+[MISS] Address: 0x164
+
+[TEST] Sending read request for address 0x168
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x164, evict_way: x
+[DEBUG] Memory request for address 0x164, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x164, evict_way: x
+[DEBUG] Memory request for address 0x164, evict_way: x
+
+[TEST] Sending read request for address 0x16c
+[MISS] Address: 0x16c
+
+[TEST] Sending read request for address 0x170
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x16c, evict_way: x
+[DEBUG] Memory request for address 0x16c, evict_way: x
+
+[TEST] Sending read request for address 0x174
+[MISS] Address: 0x174
+
+[TEST] Sending read request for address 0x178
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x174, evict_way: x
+[DEBUG] Memory request for address 0x174, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x174, evict_way: x
+[DEBUG] Memory request for address 0x174, evict_way: x
+
+[TEST] Sending read request for address 0x17c
+[MISS] Address: 0x17c
+[MEMORY] Request at address: 0x0
+[DEBUG] Memory request for address 0x17c, evict_way: x
+[DEBUG] Memory request for address 0x17c, evict_way: x
+[MEMORY] Response data: 0x0
+[DEBUG] Memory request for address 0x17c, evict_way: x
+
+=== Cache State ===
+Hits: 0, Misses: 49, Hit Rate: 0.00%
+==================
+
+
+=========================================
+Test Summary
+=========================================
+Total accesses: 49
+Final hit rate: 0.00%
+=========================================
+
+[DEBUG] Memory request for address 0x17c, evict_way: x
+Simulation complete via $finish(1) at time 7235 NS + 0
+../tb/tb_configure_cache.sv:249     $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	22.03-s001: Exiting on Mar 29, 2026 at 23:48:44 MSK  (total: 04:17:33)
+TOOL:	xrun(64)	22.03-s001: Exiting on Apr 13, 2026 at 19:50:38 MSK  (total: 00:08:54)
