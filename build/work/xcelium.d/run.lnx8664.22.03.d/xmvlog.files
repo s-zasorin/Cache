@@ -3,10 +3,19 @@
 // Do not modify this file
 //
 /home/Stepan/cache/pkg/cache_pkg.sv
-/home/Stepan/cache/rtl/configure_cache.sv
 /home/Stepan/cache/rtl/single_port_ram.sv
+/home/Stepan/cache/rtl/cache_top.sv
 /home/Stepan/cache/tb/tb_configure_cache.sv
-/home/Stepan/cache/rtl/bin_decoder.sv
+/home/Stepan/cache/rtl/credit_cnt.sv
+/home/Stepan/cache/rtl/cnt.sv
+/home/Stepan/cache/rtl/dual_port_ram.sv
+/home/Stepan/cache/rtl/fifo.sv
+/home/Stepan/cache/rtl/show_ahead_fifo.sv
 /home/Stepan/cache/rtl/onehot_decoder.sv
 /home/Stepan/cache/rtl/plru_calc.sv
 /home/Stepan/cache/rtl/plru_refill.sv
+/home/Stepan/cache/rtl/plru_wrapper.sv
+/home/Stepan/cache/rtl/cache_fsm.sv
+/home/Stepan/cache/rtl/hit_miss_detect.sv
+/home/Stepan/cache/rtl/mshr.sv
+/home/Stepan/cache/rtl/cache_data_read.sv

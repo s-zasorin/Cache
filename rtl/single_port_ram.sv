@@ -5,6 +5,7 @@ module single_port_ram
 (
   input  logic                           clk_i       ,
   input  logic                           wr_en_i     ,
+  input  logic                           req_i       ,
   input  logic        [ADDR_WIDTH - 1:0] addr_i      ,
   input  logic        [DATA_WIDTH - 1:0] write_data_i,
 
@@ -15,9 +16,11 @@ module single_port_ram
   logic [DATA_WIDTH - 1:0]   read_data_ff            ;
 
   always_ff @(posedge clk_i) begin
-    if (wr_en_i)
-      ram[addr_i] <= write_data_i;
-    read_data_ff  <= ram[addr_i] ;
+    if (req_i) begin
+      if (wr_en_i)
+        ram[addr_i] <= write_data_i;
+      read_data_ff  <= ram[addr_i] ;
+    end
   end
 
   assign read_data_o = read_data_ff ;

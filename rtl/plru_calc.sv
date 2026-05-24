@@ -12,6 +12,7 @@ import cache_pkg::*;
   logic [WIDTH_PTR_PLRU     - 1:0] evict_base_id ;
 
   always_comb begin
+    evict_way_o     = {WIDTH_WAY{1'b0}};
     evict_base_id   = {WIDTH_PTR_PLRU{1'b0}};
     evict_way_o[0]  = plru_tree_i[0];
     for (int lvl = 1; lvl < BINARY_TREE_LEVELS; lvl = lvl + 1) begin
