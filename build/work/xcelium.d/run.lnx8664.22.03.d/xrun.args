@@ -7,7 +7,6 @@
 /home/Stepan/cache/build/../pkg/cache_pkg.sv
 /home/Stepan/cache/build/../rtl/single_port_ram.sv
 /home/Stepan/cache/build/../rtl/cache_top.sv
-/home/Stepan/cache/build/../tb/tb_configure_cache.sv
 /home/Stepan/cache/build/../rtl/credit_cnt.sv
 /home/Stepan/cache/build/../rtl/cnt.sv
 /home/Stepan/cache/build/../rtl/dual_port_ram.sv
@@ -21,6 +20,7 @@
 /home/Stepan/cache/build/../rtl/hit_miss_detect.sv
 /home/Stepan/cache/build/../rtl/mshr.sv
 /home/Stepan/cache/build/../rtl/cache_data_read.sv
+/home/Stepan/cache/build/../tb/tb_configure_cache.sv
 -xmlibdirpath
 /home/Stepan/cache/build/work
 -l

@@ -1,12 +1,11 @@
 xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s001: Started on May 24, 2026 at 09:50:12 MSK
+TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 15:18:11 MSK
 xrun
 	-compile
 	-64bit
 	/home/Stepan/cache/build/../pkg/cache_pkg.sv
 	/home/Stepan/cache/build/../rtl/single_port_ram.sv
 	/home/Stepan/cache/build/../rtl/cache_top.sv
-	/home/Stepan/cache/build/../tb/tb_configure_cache.sv
 	/home/Stepan/cache/build/../rtl/credit_cnt.sv
 	/home/Stepan/cache/build/../rtl/cnt.sv
 	/home/Stepan/cache/build/../rtl/dual_port_ram.sv
@@ -20,12 +19,13 @@ xrun
 	/home/Stepan/cache/build/../rtl/hit_miss_detect.sv
 	/home/Stepan/cache/build/../rtl/mshr.sv
 	/home/Stepan/cache/build/../rtl/cache_data_read.sv
-	-xmlibdirpath /home/Stepan/cache/build/work
+	/home/Stepan/cache/build/../tb/tb_configure_cache.sv
+	-xmlibdirpath /home/Stepan/cache/build/work/top
 	-l /home/Stepan/cache/build/compile.log
-Recompiling... reason: file '../pkg/cache_pkg.sv' is newer than expected.
-	expected: Thu Apr 16 18:01:46 2026
-	actual:   Fri May 22 23:55:16 2026
-file: /home/Stepan/cache/build/../rtl/mshr.sv
-	module worklib.mshr:sv
+Recompiling... reason: file '../tb/tb_configure_cache.sv' is newer than expected.
+	expected: Sun May 31 15:11:37 2026
+	actual:   Sun May 31 15:18:05 2026
+file: /home/Stepan/cache/build/../tb/tb_configure_cache.sv
+	module worklib.tb_configure_cache:sv
 		errors: 0, warnings: 0
-TOOL:	xrun(64)	22.03-s001: Exiting on May 24, 2026 at 09:50:12 MSK  (total: 00:00:00)
+TOOL:	xrun(64)	22.03-s001: Exiting on May 31, 2026 at 15:18:12 MSK  (total: 00:00:01)

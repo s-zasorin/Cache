@@ -21,17 +21,17 @@ import cache_pkg::*;
 
   localparam WIDTH_ADDR_LINE_ID = $clog2(ID_MAX_NUM);
 
-  mshr_line_t ram [DEPTH];
+  mshr_line_t ram [DEPTH - 1:0];
 
-  logic [DEPTH              - 1:0] hit_arr                    ;
-  logic [ID_MAX_NUM         - 1:0] id_hit_arr                 ;
-  logic                            hit                        ;
-  logic                            write_enable               ;
-  logic [MSHR_ADDR_WIDTH    - 1:0] num_id_hit_field           ;
-  logic [MSHR_ADDR_WIDTH    - 1:0] write_addr                 ;
-  logic [MSHR_ADDR_WIDTH    - 1:0] mshr_work_cnt              ;
-  logic                            hit_id                     ;
-  logic [DEPTH              - 1:0] full_arr                   ;
+  logic [DEPTH              - 1:0] hit_arr         ;
+  logic [DEPTH              - 1:0] id_hit_arr      ;
+  logic                            hit             ;
+  logic                            write_enable    ;
+  logic [MSHR_ADDR_WIDTH    - 1:0] num_id_hit_field;
+  logic [MSHR_ADDR_WIDTH    - 1:0] write_addr      ;
+  logic [MSHR_ADDR_WIDTH    - 1:0] mshr_work_cnt   ;
+  logic                            hit_id          ;
+  logic [DEPTH              - 1:0] full_arr        ;
 
   cnt #(
     .CNT_WIDTH(MSHR_ADDR_WIDTH)

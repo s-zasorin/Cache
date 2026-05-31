@@ -1,0 +1,37 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-XLMODE
+/home/Stepan/cache/build/work/top/xcelium.d/run.lnx8664.22.03.d
+-RUNMODE
+-amsdlibdir
+/home/Stepan/cache/build/work/top/xcelium.d/AMSD
+/home/Stepan/cache/build/../pkg/cache_pkg.sv
+/home/Stepan/cache/build/../rtl/single_port_ram.sv
+/home/Stepan/cache/build/../rtl/cache_top.sv
+/home/Stepan/cache/build/../rtl/credit_cnt.sv
+/home/Stepan/cache/build/../rtl/cnt.sv
+/home/Stepan/cache/build/../rtl/dual_port_ram.sv
+/home/Stepan/cache/build/../rtl/fifo.sv
+/home/Stepan/cache/build/../rtl/show_ahead_fifo.sv
+/home/Stepan/cache/build/../rtl/onehot_decoder.sv
+/home/Stepan/cache/build/../rtl/plru_calc.sv
+/home/Stepan/cache/build/../rtl/plru_refill.sv
+/home/Stepan/cache/build/../rtl/plru_wrapper.sv
+/home/Stepan/cache/build/../rtl/cache_fsm.sv
+/home/Stepan/cache/build/../rtl/hit_miss_detect.sv
+/home/Stepan/cache/build/../rtl/mshr.sv
+/home/Stepan/cache/build/../rtl/cache_data_read.sv
+/home/Stepan/cache/build/../tb/tb_configure_cache.sv
+-XMLIBDIRPATH
+/home/Stepan/cache/build/work/top
+-CDSLIB
+/home/Stepan/cache/build/work/top/xcelium.d/run.lnx8664.22.03.d/cdsrun.lib
+-HDLVAR
+/home/Stepan/cache/build/work/top/xcelium.d/run.lnx8664.22.03.d/hdlrun.var
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+/home/Stepan/cache/build/work/top/xcelium.d/run.lnx8664.22.03.d/xllibs
+-ALLOWUNBOUND

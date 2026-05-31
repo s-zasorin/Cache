@@ -18,8 +18,7 @@ module show_ahead_fifo #(parameter type struct_t = logic,
 
   localparam int unsigned DATA_WIDTH = $bits(struct_t);
 
-  localparam ONE_RAM_DEPTH           = FIFO_DEPTH / 2;
-  localparam PTR_WIDTH               = $clog2(ONE_RAM_DEPTH);
+  localparam PTR_WIDTH = $clog2(FIFO_DEPTH);
 
   logic [PTR_WIDTH     :0] wr_ptr         ;
   logic [PTR_WIDTH     :0] rd_ptr         ;
@@ -55,7 +54,7 @@ module show_ahead_fifo #(parameter type struct_t = logic,
 
   dual_port_ram #(
     .DATA_WIDTH(DATA_WIDTH    ),
-    .RAM_DEPTH (ONE_RAM_DEPTH ),
+    .RAM_DEPTH (FIFO_DEPTH    ),
     .ADDR_WIDTH(PTR_WIDTH     )
   ) i_ram (
     .clk_i    (aclk_i      ),

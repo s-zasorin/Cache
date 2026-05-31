@@ -1,77 +1,39 @@
 xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s001: Started on May 24, 2026 at 09:50:13 MSK
+TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 15:18:12 MSK
 xrun
 	-elaborate
 	-elabonly
 	-64bit
 	-top tb_configure_cache
 	-snapshot tb_configure_cache_opt
-	-xmlibdirpath /home/Stepan/cache/build/work
+	-xmlibdirpath /home/Stepan/cache/build/work/top
 	-access +rwc
 	-l /home/Stepan/cache/build/opt.log
-No source files were detected on the command line yet something was detected as out of date: checksum check failure for module worklib.mshr:sv (VST).
+No source files were detected on the command line yet something was detected as out of date: Missing module worklib.tb_configure_cache:sv (SIG) <0x4c509b5c>.
 Rerun with the required source files to ensure recompile.
 	Elaborating the design hierarchy:
 		Caching library 'worklib' ....... Done
-    .DEPTH   (SETS                   )
-         |
-xmelab: *W,CUVUKP (../rtl/cache_top.sv,264|9): The name 'DEPTH' is not declared in the instantiated module (defined at ../rtl/show_ahead_fifo.sv,1).
-    .DEPTH   (SETS                   )
-         |
-xmelab: *W,CUVUKP (../rtl/cache_top.sv,290|9): The name 'DEPTH' is not declared in the instantiated module (defined at ../rtl/show_ahead_fifo.sv,1).
 	Top level design units:
 		cache_pkg
 		tb_configure_cache
 xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
-    .init_cnt_i     (init_cnt_ff           ),
-                               |
-xmelab: *W,CUVMPW (../rtl/cache_top.sv,197|31): port sizes differ in port connection(3/2) for the instance(tb_configure_cache.DUT) .
-    .onehot_i(id_hit_arr      ),
-                       |
-xmelab: *W,CUVMPW (../rtl/mshr.sv,81|23): port sizes differ in port connection(2/4) for the instance(tb_configure_cache.DUT.i_mshr) .
-    .cq_addr_i     (mshr_read_miss_addr  ),
-                                      |
-xmelab: *W,CUVMPW (../rtl/cache_top.sv,223|38): port sizes differ in port connection(32/3) for the instance(tb_configure_cache.DUT) .
-    .onehot_i(hit_i     ),
-                  |
-xmelab: *W,CUVMPW (../rtl/plru_refill.sv,20|18): port sizes differ in port connection(4/8) for the instance(tb_configure_cache.DUT.i_dr.i_plru_wrapper.i_refill) .
-    .bin_o   (num_of_way)
-                       |
-xmelab: *W,CUVMPW (../rtl/plru_refill.sv,21|23): port sizes differ in port connection(2/3) for the instance(tb_configure_cache.DUT.i_dr.i_plru_wrapper.i_refill) .
-    .wr_addr_i(wr_ptr      ),
-                    |
-xmelab: *W,CUVMPW (../rtl/show_ahead_fifo.sv,62|20): port sizes differ in port connection(4/3) for the instance(tb_configure_cache.DUT.i_tx_command_queue) .
-    .rd_addr_i(rd_ptr + 'b1),
-                      |
-xmelab: *W,CUVMPW (../rtl/show_ahead_fifo.sv,66|22): port sizes differ in port connection(32/3) for the instance(tb_configure_cache.DUT.i_tx_command_queue) .
-    .wr_addr_i(wr_ptr      ),
-                    |
-xmelab: *W,CUVMPW (../rtl/show_ahead_fifo.sv,62|20): port sizes differ in port connection(4/3) for the instance(tb_configure_cache.DUT.i_rx_command_queue) .
-    .rd_addr_i(rd_ptr + 'b1),
-                      |
-xmelab: *W,CUVMPW (../rtl/show_ahead_fifo.sv,66|22): port sizes differ in port connection(32/3) for the instance(tb_configure_cache.DUT.i_rx_command_queue) .
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.onehot_decoder:sv <0x15839c05>
-			streams:   1, words:   438
-		worklib.mshr:sv <0x052aff51>
-			streams:  19, words: 10949
-      assign id_hit_arr[i] = (ram[i].req_id == target_id_i) && ram[i].valid;
-                      |
-xmelab: *W,BNDWRN (../rtl/mshr.sv,74|22): Bit-select or part-select index out of declared bounds.
+		worklib.tb_configure_cache:sv <0x4c509b5c>
+			streams:  32, words: 28769
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		               Instances  Unique
-		Modules:              30      16
+		Modules:              23      13
 		Verilog packages:      1       1
-		Registers:           276     210
-		Scalar wires:        181       -
-		Expanded wires:        8       2
-		Vectored wires:      166       -
-		Always blocks:        59      39
+		Registers:           206     164
+		Scalar wires:        116       -
+		Expanded wires:        4       1
+		Vectored wires:      128       -
+		Always blocks:        49      37
 		Initial blocks:        5       5
-		Cont. assignments:   125      93
-		Pseudo assignments:  142     118
+		Cont. assignments:    76      62
+		Pseudo assignments:  112      88
 	Writing initial simulation snapshot: worklib.tb_configure_cache_opt:sv
-TOOL:	xrun(64)	22.03-s001: Exiting on May 24, 2026 at 09:50:13 MSK  (total: 00:00:00)
+TOOL:	xrun(64)	22.03-s001: Exiting on May 31, 2026 at 15:18:12 MSK  (total: 00:00:00)

@@ -44,6 +44,7 @@ module cache_data_read #(
   logic [DATA_WIDTH    - 1:0] read_data_ff        ;
   logic [ID_WIDTH      - 1:0] s_id_ff       [1:0] ;    
   logic [WAYS          - 1:0] hit_arr             ;
+  logic [WAYS          - 1:0] hit_arr_ff          ;
   logic [DATA_WIDTH    - 1:0] select_read_data    ;
   logic [SET_WIDTH     - 1:0] set_ff        [1:0] ;
   logic [WAYS          - 1:0] update_vector       ;
@@ -55,9 +56,10 @@ module cache_data_read #(
   assign data_mem_req = s_handshake || cq_valid_i;
 
   always_comb begin
+    update_vector = {WAYS{1'b0}};
     if (cq_valid_i)
       update_vector = write_enable_i;
-    else
+    else if (s_handshake)
       update_vector = hit_arr;
   end
 
@@ -81,8 +83,9 @@ module cache_data_read #(
   end
 
   always_comb begin
+    select_read_data = 'b0;
     for (int j = 0; j < WAYS; ++j) begin
-      select_read_data |= read_data_ram[j] & {DATA_WIDTH{hit_arr[j]}};
+      select_read_data |= read_data_ram[j] & {DATA_WIDTH{hit_arr_ff[j]}};
     end
   end
 
@@ -120,12 +123,18 @@ module cache_data_read #(
     if (~aresetn_i)
       s_valid_ff <= 2'b0;
     else begin
-      s_valid_ff[0] <= s_valid_i;
+      s_valid_ff[0] <= s_handshake;
       s_valid_ff[1] <= s_valid_ff[0];
     end
   
+  always_ff @(posedge clk_i or negedge aresetn_i)
+    if (~aresetn_i)
+      hit_arr_ff <= {WAYS{1'b0}};
+    else if (s_handshake)
+      hit_arr_ff <= hit_arr;
+
   always_ff @(posedge clk_i)
-    if (s_valid_i)
+    if (s_handshake)
       s_id_ff[0] <= s_id;
   
   always_ff @(posedge clk_i)
@@ -133,7 +142,7 @@ module cache_data_read #(
       s_id_ff[1] <= s_id_ff[0];
 
   always_ff @(posedge clk_i)
-    if (s_valid_i)
+    if (s_handshake)
       set_ff[0] <= s_set;
   
   always_ff @(posedge clk_i)

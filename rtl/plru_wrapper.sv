@@ -33,12 +33,14 @@ import cache_pkg::*;
       shift <= (shift >> 1);
 
   assign write_data   = init_i ? {PLRU_WIDTH{1'b0}} : write_plru_tree;
-  assign write_enable = init_i ? 1'b1 : valid_ff;
+  assign write_enable = init_i ? 1'b1 : shift[1];
   assign handshake    = ready_o && valid_i;
   assign ready_o      = shift[0];
 
-  always_ff @(posedge clk_i)
-    if (handshake)
+  always_ff @(posedge clk_i or negedge aresetn_i)
+    if (~aresetn_i)
+      hit_ff <= {WAYS{1'b0}};
+    else if (handshake)
       hit_ff <= hit_i;
 
   single_port_ram #(
@@ -51,13 +53,6 @@ import cache_pkg::*;
     .addr_i      (set_i       ),
     .write_data_i(write_data  ),
     .read_data_o (read_plru   )
-  );
-
-  plru_refill i_refill
-  (
-    .plru_tree_i(read_plru      ),
-    .hit_i      (hit_ff         ),
-    .plru_tree_o(write_plru_tree)
   );
 
   assign plru_tree_o = write_plru_tree;

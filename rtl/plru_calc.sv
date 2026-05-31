@@ -6,19 +6,23 @@ import cache_pkg::*;
   output  logic [WIDTH_WAY  - 1:0] evict_way_o
 );
 
-  localparam BINARY_TREE_LEVELS = $clog2(WAYS)      ;
-  localparam WIDTH_PTR_PLRU     = $clog2(WIDTH_PLRU);
-
-  logic [WIDTH_PTR_PLRU     - 1:0] evict_base_id ;
+  localparam BINARY_TREE_LEVELS = $clog2(WAYS);
+  
+  logic [BINARY_TREE_LEVELS - 1:0] way_index;
+  logic [WIDTH_PLRU - 1:0] node_idx;
 
   always_comb begin
-    evict_way_o     = {WIDTH_WAY{1'b0}};
-    evict_base_id   = {WIDTH_PTR_PLRU{1'b0}};
-    evict_way_o[0]  = plru_tree_i[0];
-    for (int lvl = 1; lvl < BINARY_TREE_LEVELS; lvl = lvl + 1) begin
-      evict_base_id    = ('b1 << lvl) - 1'b1;
-      evict_way_o[lvl] = evict_way_o[lvl - 1] ? plru_tree_i[evict_base_id + 1'b1] : plru_tree_i[evict_base_id];
+    way_index = '0;
+    
+    for (int lvl = 0; lvl < BINARY_TREE_LEVELS; lvl++) begin
+      // Используем уже накопленные старшие биты для расчета node_idx
+      // Младшие биты (которые еще не определены) игнорируем
+      node_idx = ((1 << lvl) - 1) + (way_index >> (BINARY_TREE_LEVELS - lvl));
+      
+      way_index[BINARY_TREE_LEVELS - lvl - 1] = plru_tree_i[node_idx];
     end
+    
+    evict_way_o = way_index;
   end
 
 endmodule

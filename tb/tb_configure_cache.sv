@@ -18,7 +18,7 @@ module tb_configure_cache ();
   logic                    cpu_ready_o ;
   logic                    valid_o     ;
   logic [4:0]              cpu_req_id_o;
-  logic [DATA_WIDTH - 1:0] read_data_o ;
+  logic [DATA_WIDTH - 1:0] cpu_data_o  ;
   
   // Memory Interface
   logic                    mem_req_o    ;
@@ -45,7 +45,7 @@ module tb_configure_cache ();
     .cpu_ready_o (cpu_ready_o ),
     .cpu_valid_o (valid_o     ),
     .cpu_req_id_o(cpu_req_id_o),
-    .cpu_data_o  (read_data_o ),
+    .cpu_data_o  (cpu_data_o  ),
 
     .mem_req_o   (mem_req_o   ),
     .mem_addr_o  (mem_addr_o  ),
@@ -81,8 +81,7 @@ module tb_configure_cache ();
     cpu_valid_i  <= 1'b1;
     cpu_addr_i   <= test_addr_i;
     cpu_req_id_i <= test_id_i;
-    //@(posedge clk_i);
-    //cpu_req_id_i <= 5'd2;
+
     @(posedge clk_i);
     cpu_valid_i <= 1'b0;
   endtask
@@ -90,44 +89,59 @@ module tb_configure_cache ();
   task wait_mem_ack();
     wait(mem_req_o);
     mem_ack_i     <= 1'b1;
+    mem_data_i    <= external_memory[mem_addr_o];
+    mem_id_i      <= mem_id_o;
     @(posedge clk_i);
     mem_ack_i     <= 1'b0;
-    mem_save_addr <= mem_addr_o;
-    mem_save_id   <= mem_id_o  ;
-    repeat (2) @(posedge clk_i);
-    mem_valid_i   <= 1'b1;
-    mem_data_i    <= external_memory[mem_save_addr];
-    mem_id_i      <= mem_save_id;
-    @(posedge clk_i);
-    mem_valid_i   <= 1'b0;
   endtask
 
   initial begin
     aresetn_i <= 1'b0;
     @(posedge clk_i);
     aresetn_i <= 1'b1;
-    repeat (100) @(posedge clk_i);
+    repeat (500) @(posedge clk_i);
     $finish();
   end
 
   initial begin
-    repeat (10) @(posedge clk_i);
+    repeat (15) @(posedge clk_i);
     send_cpu_req('d215, 'd1);
-    //@(posedge clk_i);
+    repeat (9) @(posedge clk_i);
     send_cpu_req('d315, 'd2);
-    send_cpu_req('d83, 'd3);
+    repeat (9) @(posedge clk_i);
+    send_cpu_req('d83 , 'd3);
+    repeat (9) @(posedge clk_i);
     send_cpu_req('d121, 'd4);
+    repeat (9) @(posedge clk_i);
     send_cpu_req('d221, 'd5);
+    repeat (9) @(posedge clk_i);
     send_cpu_req('d387, 'd6);
+    repeat (9) @(posedge clk_i);
     send_cpu_req('d566, 'd7);
-    repeat (18) @(posedge clk_i);
-    send_cpu_req('d215, 'd8);
-    send_cpu_req('d315, 'd9);
+    repeat (9) @(posedge clk_i);
+    send_cpu_req('d289, 'd8);
+    repeat (9) @(posedge clk_i);
+    send_cpu_req('d300, 'd9);
+    repeat (9) @(posedge clk_i);
+    send_cpu_req('d452, 'd10);
+    repeat (9) @(posedge clk_i);
+    send_cpu_req('d904, 'd11);
+    //repeat (40) @(posedge clk_i);
+    send_cpu_req('d215, 'd12);
+    send_cpu_req('d315, 'd13);
+    send_cpu_req('d121, 'd14);
+    //send_cpu_req('d221, 'd15);
+    send_cpu_req('d387, 'd16);
+    send_cpu_req('d566, 'd17);
+    send_cpu_req('d289, 'd18);
+    send_cpu_req('d300, 'd19);
+    //send_cpu_req('d452, 'd20);
+    send_cpu_req('d904, 'd21);
     send_cpu_req('d83, 'd10);
-    send_cpu_req('d121, 'd11);
-    send_cpu_req('d221, 'd12);
-    send_cpu_req('d387, 'd13);
-    send_cpu_req('d566, 'd14);
+    //send_cpu_req('d121, 'd11);
+    //send_cpu_req('d221, 'd12);
+    //send_cpu_req('d387, 'd13);
+    //send_cpu_req('d566, 'd14);
     //@(posedge clk_i);
     //send_cpu_req('d56, 'd3);
     //repeat (10) @(posedge clk_i);
@@ -149,9 +163,25 @@ module tb_configure_cache ();
     mem_ack_i   <= 1'b0;
     repeat (15) @(posedge clk_i);
     wait_mem_ack();
-    @(posedge clk_i);
+    repeat (11) @(posedge clk_i);
     wait_mem_ack();
-    @(posedge clk_i);
+    repeat (11) @(posedge clk_i);
+    wait_mem_ack();
+    repeat (11) @(posedge clk_i);
+    wait_mem_ack();
+    repeat (11) @(posedge clk_i);
+    wait_mem_ack();
+    repeat (11) @(posedge clk_i);
+    wait_mem_ack();
+    repeat (11) @(posedge clk_i);
+    wait_mem_ack();
+    repeat (11) @(posedge clk_i);
+    wait_mem_ack();
+    repeat (11) @(posedge clk_i);
+    wait_mem_ack();
+    repeat (30) @(posedge clk_i);
+    wait_mem_ack();
+    repeat (30) @(posedge clk_i);
     wait_mem_ack();
   end
 endmodule

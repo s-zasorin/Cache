@@ -7,33 +7,25 @@ import cache_pkg::*;
   output  logic [WIDTH_PLRU - 1:0] plru_tree_o
 );
 
-  localparam BINARY_TREE_LEVELS = $clog2(WAYS)      ;
-  localparam WIDTH_PTR_PLRU     = $clog2(WIDTH_PLRU);
+  localparam LEVELS = $clog2(WAYS);
 
-  logic [WIDTH_PTR_PLRU     - 1:0] update_base_id;
-  logic [WIDTH_PTR_PLRU     - 1:0] evict_base_id ;
-  logic [BINARY_TREE_LEVELS - 2:0] offset        ;
-  logic [WIDTH_WAY          - 1:0] num_of_way    ;
-
-  onehot_decoder i_onehot
-  (
-    .onehot_i(hit_i     ),
-    .bin_o   (num_of_way)
+  logic [WIDTH_WAY - 1:0] hit_way_num;
+  logic [WIDTH_WAY - 1:0] offset;
+  logic [LEVELS    - 1:0] update_base_id;
+  onehot_decoder #(
+    .ONE_HOT_WIDTH(WAYS)
+  ) i_onehot (
+    .onehot_i(hit_i),
+    .bin_o   (hit_way_num)
   );
 
   always_comb begin
-    update_base_id = {WIDTH_PTR_PLRU{1'b0}};
-    offset         = {(BINARY_TREE_LEVELS - 1){1'b0}};
-    plru_tree_o    = plru_tree_i;
+    plru_tree_o = plru_tree_i;
 
-    for (int i = 0; i < WAYS; i = i + 1) begin
-      if (hit_i[i]) begin
-        for (int lvl = BINARY_TREE_LEVELS - 1; lvl >= 0; lvl = lvl - 1) begin
-          update_base_id  = ('b1 << lvl) - 1'b1;
-          offset = (num_of_way >> lvl) & ((1 << (WIDTH_WAY - lvl)) - 1);
-          plru_tree_o[update_base_id + offset] = ~plru_tree_i[update_base_id + offset];
-        end
-      end
+    for (int lvl = LEVELS - 1; lvl >= 0; lvl = lvl - 1) begin
+      update_base_id  = ('b1 << lvl) - 1'b1;
+      offset = (hit_way_num >> (LEVELS - lvl));
+      plru_tree_o[update_base_id + offset] = ~plru_tree_i[update_base_id + offset];
     end
   end
 

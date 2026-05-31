@@ -12,8 +12,8 @@ module single_port_ram
   output logic        [DATA_WIDTH - 1:0] read_data_o
 );
 
-  logic [DATA_WIDTH - 1:0]   ram          [RAM_DEPTH];
-  logic [DATA_WIDTH - 1:0]   read_data_ff            ;
+  logic [DATA_WIDTH - 1:0]   ram          [RAM_DEPTH - 1:0];
+  logic [DATA_WIDTH - 1:0]   read_data_ff                  ;
 
   always_ff @(posedge clk_i) begin
     if (req_i) begin

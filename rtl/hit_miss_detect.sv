@@ -20,6 +20,7 @@ module hit_miss_detect #(
 
   // System Interface
   input  logic                    init_i      ,
+  input  logic                    stall_i     ,
   input  logic [PLRU_WIDTH - 1:0] plru_tree_i ,
   input  logic [SET_WIDTH  - 1:0] init_cnt_i  ,
   output logic [WAYS       - 1:0] dr_we_o     ,
@@ -42,6 +43,7 @@ module hit_miss_detect #(
 
   logic [SET_WIDTH  - 1:0] input_cpu_set;
   logic [SET_WIDTH  - 1:0] cq_set       ;
+  logic [SET_WIDTH  - 1:0] cq_set_ff    ;
 
   logic [WIDTH_WAY  - 1:0] evict_way     ;
   logic [WAYS       - 1:0] we_tag_ram    ;
@@ -50,9 +52,11 @@ module hit_miss_detect #(
 
   logic [WAYS       - 1:0] read_data_status    ;
   logic [WAYS       - 1:0] write_data_state_ram;
+  logic [WAYS       - 1:0] write_data_state_ram_ff;
 
   logic                    tag_mem_req;
   logic                    state_mem_req;
+  logic                    we_state_ram;
   logic                    cq_valid_ff;
   logic                    cq_valid_edge;
 
@@ -91,8 +95,11 @@ module hit_miss_detect #(
       we_tag_ram[evict_way] = 1'b1;
   end
 
+  always_ff @(posedge clk_i)
+    cq_set_ff <= cq_set;
+
   always_comb begin
-    addr_tag_ram = {SET_WIDTH{1'b0}};
+    addr_tag_ram = cq_set_ff;
 
     if (cpu_valid_i)
       addr_tag_ram = input_cpu_set;
@@ -101,7 +108,7 @@ module hit_miss_detect #(
   end
 
   always_comb begin
-    addr_state_ram   = {SET_WIDTH{1'b0}};
+    addr_state_ram   = cq_set_ff;
 
     if (cpu_valid_i)
       addr_state_ram = input_cpu_set;
@@ -120,6 +127,10 @@ module hit_miss_detect #(
       write_data_state_ram[evict_way] = 1'b1;
   end
 
+  always_ff @(posedge clk_i)
+    if (cq_valid_edge)
+      write_data_state_ram_ff <= write_data_state_ram;
+
   plru_calc i_plru_calc
   (
     .plru_tree_i(plru_tree_i),
@@ -135,7 +146,7 @@ module hit_miss_detect #(
       ) i_tag_ram (
         .clk_i              (clk_i           ),
         .wr_en_i            (we_tag_ram[i]   ),
-        .req_i              (tag_mem_req     ),
+        .req_i              (1'b1            ),
         .addr_i             (addr_tag_ram    ),
         .write_data_i       (mem_write_tag   ),
         .read_data_o        (read_data_tag[i])
@@ -150,7 +161,7 @@ module hit_miss_detect #(
     ) i_status_ram (
     .clk_i       (clk_i               ),
     .wr_en_i     (we_state_ram        ),
-    .req_i       (state_mem_req       ),
+    .req_i       (1'b1                ),
     .addr_i      (addr_state_ram      ),
     .write_data_i(write_data_state_ram),
     .read_data_o (read_data_status    )
@@ -163,7 +174,7 @@ module hit_miss_detect #(
   always_ff @(posedge clk_i)
     if (~aresetn_i)
       valid_o <= 1'b0;
-    else
+    else if (~stall_i)
       valid_o <= cpu_valid_i;
 
   always_ff @(posedge clk_i)
@@ -180,7 +191,7 @@ module hit_miss_detect #(
   endgenerate
 
   assign hit_o       = |hit_arr_o && valid_o;
-  assign miss_o      = ~hit_o  ;
+  assign miss_o      = ~hit_o && valid_o  ;
   assign miss_addr_o = miss_o ? cpu_addr_ff : 'b0;
   assign set_o       = cpu_set_ff;
 
