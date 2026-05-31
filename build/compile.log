@@ -1,5 +1,5 @@
 xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 15:18:11 MSK
+TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 23:29:40 MSK
 xrun
 	-compile
 	-64bit
@@ -22,10 +22,10 @@ xrun
 	/home/Stepan/cache/build/../tb/tb_configure_cache.sv
 	-xmlibdirpath /home/Stepan/cache/build/work/top
 	-l /home/Stepan/cache/build/compile.log
-Recompiling... reason: file '../tb/tb_configure_cache.sv' is newer than expected.
-	expected: Sun May 31 15:11:37 2026
-	actual:   Sun May 31 15:18:05 2026
-file: /home/Stepan/cache/build/../tb/tb_configure_cache.sv
-	module worklib.tb_configure_cache:sv
+Recompiling... reason: file '../rtl/hit_miss_detect.sv' is newer than expected.
+	expected: Sun May 31 23:27:15 2026
+	actual:   Sun May 31 23:29:34 2026
+file: /home/Stepan/cache/build/../rtl/hit_miss_detect.sv
+	module worklib.hit_miss_detect:sv
 		errors: 0, warnings: 0
-TOOL:	xrun(64)	22.03-s001: Exiting on May 31, 2026 at 15:18:12 MSK  (total: 00:00:01)
+TOOL:	xrun(64)	22.03-s001: Exiting on May 31, 2026 at 23:29:41 MSK  (total: 00:00:01)

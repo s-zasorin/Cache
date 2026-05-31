@@ -1,5 +1,5 @@
 xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 15:18:12 MSK
+TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 23:29:41 MSK
 xrun
 	-elaborate
 	-elabonly
@@ -9,7 +9,7 @@ xrun
 	-xmlibdirpath /home/Stepan/cache/build/work/top
 	-access +rwc
 	-l /home/Stepan/cache/build/opt.log
-No source files were detected on the command line yet something was detected as out of date: Missing module worklib.tb_configure_cache:sv (SIG) <0x4c509b5c>.
+No source files were detected on the command line yet something was detected as out of date: Missing module worklib.hit_miss_detect:sv (SIG) <0x4863a7fd>.
 Rerun with the required source files to ensure recompile.
 	Elaborating the design hierarchy:
 		Caching library 'worklib' ....... Done
@@ -19,21 +19,21 @@ Rerun with the required source files to ensure recompile.
 xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.tb_configure_cache:sv <0x4c509b5c>
-			streams:  32, words: 28769
+		worklib.hit_miss_detect:sv <0x34bbf2d3>
+			streams:  42, words: 15173
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		               Instances  Unique
-		Modules:              23      13
+		Modules:              18      10
 		Verilog packages:      1       1
-		Registers:           206     164
-		Scalar wires:        116       -
+		Registers:           166     142
+		Scalar wires:         76       -
 		Expanded wires:        4       1
-		Vectored wires:      128       -
-		Always blocks:        49      37
+		Vectored wires:      108       -
+		Always blocks:        41      33
 		Initial blocks:        5       5
-		Cont. assignments:    76      62
-		Pseudo assignments:  112      88
+		Cont. assignments:    50      51
+		Pseudo assignments:   88      64
 	Writing initial simulation snapshot: worklib.tb_configure_cache_opt:sv
-TOOL:	xrun(64)	22.03-s001: Exiting on May 31, 2026 at 15:18:12 MSK  (total: 00:00:00)
+TOOL:	xrun(64)	22.03-s001: Exiting on May 31, 2026 at 23:29:41 MSK  (total: 00:00:00)

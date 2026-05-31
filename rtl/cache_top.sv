@@ -47,13 +47,10 @@ import cache_pkg::*;
   logic                             hmd_valid_out   ;
   logic [WAYS       - 1:0]          hmd_we_dr_out   ;
 
-  logic                             hmd_fifo_s_valid;
-  logic                             hmd_fifo_s_ready;
-  hmd_fifo_t                        hmd_fifo_s_data ;
+  logic                             hmd_to_dr_valid ;
 
-  logic                             hmd_fifo_m_valid;
-  logic                             hmd_fifo_m_ready;
-  hmd_fifo_t                        hmd_fifo_m_data ;
+  hmd_fifo_t                        hmd_m_data      ;
+  logic [WAYS       - 1:0]          hmd_hit_arr     ;
 
   // Local declarations Data Read Stage
   logic                             dr_fifo_s_valid;
@@ -113,50 +110,19 @@ import cache_pkg::*;
 
     .hit_o       (hmd_hit                ),
     .miss_o      (hmd_miss               ),
-    .id_o        (hmd_fifo_s_data.id     ),
-    .set_o       (hmd_fifo_s_data.set    ),
-    .hit_arr_o   (hmd_fifo_s_data.hit_arr),
+    .id_o        (hmd_id                 ),
+    .set_o       (hmd_set                ),
+    .hit_arr_o   (hmd_hit_arr            ),
     .miss_addr_o (hmd_addr               ),
     .valid_o     (hmd_valid_out          )
   );
 
-  assign hmd_id         = hmd_fifo_s_data.id;
 
-  assign credit_incr    = hmd_fifo_m_ready && hmd_fifo_m_valid;
-  assign credit_decr    = hmd_fifo_s_valid && hmd_fifo_s_ready;
+  assign hmd_to_dr_valid = hmd_valid_out && hmd_hit;
 
-  credit_cnt #(
-    .CNT_WIDTH (CREDIT_CNT_WIDTH),
-    .CREDIT_NUM(CREDIT_NUM      )
-  ) i_crd_cnt (
-    .clk_i    (clk_i      ),
-    .aresetn_i(aresetn_i  ),
-    .incr_i   (credit_incr),
-    .decr_i   (credit_decr),
-    .cnt_o    (credit_cnt )
-  );
-
-  assign hmd_fifo_s_valid = hmd_valid_out && hmd_hit;
-
-
-  fifo #(
-    .struct_t(hmd_fifo_t       ),
-    .DEPTH   (COMMON_FIFO_DEPTH)
-  ) i_hm_detect_fifo (
-    .clk_i     (clk_i           ),
-    .arstn_i   (aresetn_i       ),
-
-    .s_tvalid_i(hmd_fifo_s_valid),
-    .s_tready_o(hmd_fifo_s_ready),
-    .s_tdata_i (hmd_fifo_s_data ),
-
-    .m_tvalid_o(hmd_fifo_m_valid), 
-    .m_tready_i(hmd_fifo_m_ready), 
-    .m_tdata_o (hmd_fifo_m_data )
-  );
-
-  assign hmd_fifo_m_ready = dr_ready;
-  assign hmd_set          = mem_addr_o[SET_WIDTH - 1:0];
+  assign hmd_m_data.set     = hmd_set    ;
+  assign hmd_m_data.id      = hmd_id     ;
+  assign hmd_m_data.hit_arr = hmd_hit_arr;
 
   cache_data_read #(
     .SETS           (SETS                   ),
@@ -166,49 +132,28 @@ import cache_pkg::*;
     .slave_struct_t (hmd_fifo_t             ),
     .master_struct_t(rx_command_queue_line_t)
   ) i_dr (
-    .clk_i         (clk_i                ),
-    .aresetn_i     (aresetn_i            ),
+    .clk_i         (clk_i           ),
+    .aresetn_i     (aresetn_i       ),
 
-    .s_data_i      (hmd_fifo_m_data      ),
-    .s_valid_i     (hmd_fifo_m_valid     ),
-    .s_ready_o     (dr_ready             ),
+    .s_data_i      (hmd_m_data      ),
+    .s_valid_i     (hmd_to_dr_valid ),
+    .s_ready_o     (dr_ready        ),
 
-    .cq_data_i     (mem_data_i           ),
-    .cq_addr_i     (hmd_set              ),
-    .cq_valid_i    (mem_handshake        ),
+    .cq_data_i     (mem_data_i      ),
+    .cq_addr_i     (hmd_set         ),
+    .cq_valid_i    (mem_handshake   ),
 
-    .init_i        (init                 ),
-    .init_cnt_i    (init_cnt_ff          ),
-    .plru_tree_o   (plru_tree            ),
-    .write_enable_i(hmd_we_dr_out        ),
+    .init_i        (init            ),
+    .stall_i       (fsm_write_back  ),
+    .init_cnt_i    (init_cnt_ff     ),
+    .plru_tree_o   (plru_tree       ),
+    .write_enable_i(hmd_we_dr_out   ),
 
-    .m_data_o      (dr_ram_data_read     ),
-    .m_valid_o     (dr_valid             )
+    .m_data_o      (dr_ram_data_read),
+    .m_valid_o     (dr_valid        )
   );
 
-  assign dr_fifo_s_valid      = dr_valid;
-  assign dr_fifo_s_data.data  = dr_ram_data_read.mem_data;
-  assign dr_fifo_s_data.id    = dr_ram_data_read.req_id;
-
-  fifo #(
-    .struct_t(dr_fifo_t),
-    .DEPTH   (4)
-  ) i_dr_fifo (
-    .clk_i     (clk_i          ),
-    .arstn_i   (aresetn_i      ),
-
-    .s_tvalid_i(dr_fifo_s_valid),
-    .s_tready_o(dr_fifo_s_ready),
-    .s_tdata_i (dr_fifo_s_data ),
-
-    .m_tvalid_o(dr_fifo_m_valid),
-    .m_tready_i(dr_fifo_m_ready),
-    .m_tdata_o (dr_fifo_m_data )
-  );
-
-  assign dr_fifo_m_ready = work;
-
-  assign mem_req_o       = fsm_write_back;
+  assign mem_req_o = fsm_write_back;
 
   always_ff @(posedge clk_i)
     if (hmd_miss && work)
@@ -232,10 +177,10 @@ import cache_pkg::*;
   );
 
   // Write-Back
-  assign cpu_ready_o  = ~fsm_write_back && (credit_cnt != 0);
+  assign cpu_ready_o  = ~fsm_write_back;
 
-  assign cpu_valid_o  = (fsm_write_back || (work && ~dr_fifo_m_valid)) ? mem_handshake : dr_fifo_m_valid    ;
-  assign cpu_req_id_o = (fsm_write_back || (work && ~dr_fifo_m_valid)) ? mem_id_i      : dr_fifo_m_data.id  ;
-  assign cpu_data_o   = (fsm_write_back || (work && ~dr_fifo_m_valid)) ? mem_data_i    : dr_fifo_m_data.data;
+  assign cpu_valid_o  = (fsm_write_back || (work && ~dr_valid)) ? mem_handshake : dr_valid                 ;
+  assign cpu_req_id_o = (fsm_write_back || (work && ~dr_valid)) ? mem_id_i      : dr_ram_data_read.req_id  ;
+  assign cpu_data_o   = (fsm_write_back || (work && ~dr_valid)) ? mem_data_i    : dr_ram_data_read.mem_data;
 
 endmodule

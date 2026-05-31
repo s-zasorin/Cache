@@ -15,7 +15,7 @@ import cache_pkg::*;
   onehot_decoder #(
     .ONE_HOT_WIDTH(WAYS)
   ) i_onehot (
-    .onehot_i(hit_i),
+    .onehot_i(hit_i      ),
     .bin_o   (hit_way_num)
   );
 

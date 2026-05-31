@@ -23,6 +23,7 @@ module cache_data_read #(
 
   // System Interface
   input  logic [WAYS       - 1:0] write_enable_i,
+  input  logic                    stall_i       ,
   input  logic                    init_i        ,
   input  logic [SET_WIDTH  - 1:0] init_cnt_i    ,
   output logic [PLRU_WIDTH - 1:0] plru_tree_o   ,
@@ -32,28 +33,37 @@ module cache_data_read #(
   output logic                    m_valid_o  
 );
 
-  logic                       s_handshake         ;
-  logic                       data_mem_req        ;
-  logic [WAYS          - 1:0] write_enable        ;
-  logic [1:0]                 s_valid_ff          ;
-  logic [SET_WIDTH     - 1:0] s_set               ;
-  logic [ID_WIDTH      - 1:0] s_id                ;
-  logic [SET_WIDTH     - 1:0] addr_plru_wrapper   ;
-  logic [SET_WIDTH     - 1:0] addr_data_ram       ;
-  logic [DATA_WIDTH    - 1:0] read_data_ram [WAYS];
-  logic [DATA_WIDTH    - 1:0] read_data_ff        ;
-  logic [ID_WIDTH      - 1:0] s_id_ff       [1:0] ;    
-  logic [WAYS          - 1:0] hit_arr             ;
-  logic [WAYS          - 1:0] hit_arr_ff          ;
-  logic [DATA_WIDTH    - 1:0] select_read_data    ;
-  logic [SET_WIDTH     - 1:0] set_ff        [1:0] ;
-  logic [WAYS          - 1:0] update_vector       ;
+  logic                       s_handshake          ;
+  logic                       data_mem_req         ;
+  logic [WAYS          - 1:0] write_enable         ;
+  logic                       s_valid_ff           ;
+  logic [SET_WIDTH     - 1:0] s_set                ;
+  logic [ID_WIDTH      - 1:0] s_id                 ;
+  logic [SET_WIDTH     - 1:0] work_addr_plru       ;
+  logic [SET_WIDTH     - 1:0] addr_data_ram        ;
+  logic [DATA_WIDTH    - 1:0] read_data_ram [WAYS] ;
+  logic [DATA_WIDTH    - 1:0] read_data_ff         ;
+  logic [ID_WIDTH      - 1:0] s_id_ff              ;    
+  logic [WAYS          - 1:0] hit_arr              ;
+  logic [WAYS          - 1:0] hit_arr_ff           ;
+  logic [DATA_WIDTH    - 1:0] select_read_data     ;
+  logic [SET_WIDTH     - 1:0] set_ff               ;
+  logic [WAYS          - 1:0] update_vector        ;
+  logic [PLRU_WIDTH    - 1:0] plru_ram      [SETS] ;
+  logic                       plru_we              ;
+  logic [PLRU_WIDTH    - 1:0] plru_tree_refilled   ;  
+  logic [PLRU_WIDTH    - 1:0] plru_tree_read       ;
+  logic [PLRU_WIDTH    - 1:0] plru_tree_read_ff    ;
+  logic [SET_WIDTH     - 1:0] work_addr_plru_ff    ;
+  logic                       plru_we_ff           ;
 
+  assign plru_we      = cq_valid_i || s_handshake ;
   assign hit_arr      = s_data_i.hit_arr;
   assign s_set        = s_data_i.set;
   assign s_id         = s_data_i.id;
   assign s_handshake  = s_valid_i && s_ready_o;
   assign data_mem_req = s_handshake || cq_valid_i;
+  assign s_ready_o    = ~stall_i;
 
   always_comb begin
     update_vector = {WAYS{1'b0}};
@@ -64,13 +74,13 @@ module cache_data_read #(
   end
 
   always_comb begin
-    addr_plru_wrapper = {SET_WIDTH{1'b0}};
+    work_addr_plru = {SET_WIDTH{1'b0}};
     if (init_i)
-      addr_plru_wrapper = init_cnt_i;
+      work_addr_plru = init_cnt_i;
     if (s_handshake)
-      addr_plru_wrapper = s_set;
+      work_addr_plru = s_set;
     else if (cq_valid_i)
-      addr_plru_wrapper = cq_addr_i;
+      work_addr_plru = cq_addr_i;
   end
 
   always_comb begin
@@ -81,6 +91,12 @@ module cache_data_read #(
     else if (cq_valid_i)
       addr_data_ram = cq_addr_i;
   end
+
+  always_ff @(posedge clk_i)
+    work_addr_plru_ff <= work_addr_plru;
+
+  always_ff @(posedge clk_i)
+    plru_we_ff <= plru_we;
 
   always_comb begin
     select_read_data = 'b0;
@@ -105,27 +121,26 @@ module cache_data_read #(
     end: g_data_ram
   endgenerate
 
-  // 2-Cycle Latency
-  plru_wrapper i_plru_wrapper
-  (
-    .clk_i      (clk_i            ),
-    .aresetn_i  (aresetn_i        ),
+  assign plru_tree_read = plru_ram[work_addr_plru_ff];
 
-    .init_i     (init_i           ),
-    .valid_i    (data_mem_req     ),
-    .ready_o    (s_ready_o        ),
-    .hit_i      (update_vector    ),
-    .set_i      (addr_plru_wrapper),
-    .plru_tree_o(plru_tree_o      )
+  plru_refill i_refill
+  (
+    .plru_tree_i(plru_tree_read    ),
+    .hit_i      (update_vector     ),
+    .plru_tree_o(plru_tree_refilled)
   );
+
+  always_ff @(posedge clk_i)
+    if (init_i)
+      plru_ram[init_cnt_i] <= {PLRU_WIDTH{1'b0}};
+    else if (plru_we)
+      plru_ram[work_addr_plru] <= plru_tree_refilled;
 
   always_ff @(posedge clk_i or negedge aresetn_i)
     if (~aresetn_i)
-      s_valid_ff <= 2'b0;
-    else begin
-      s_valid_ff[0] <= s_handshake;
-      s_valid_ff[1] <= s_valid_ff[0];
-    end
+      s_valid_ff <= 1'b0;
+    else
+      s_valid_ff <= s_handshake;
   
   always_ff @(posedge clk_i or negedge aresetn_i)
     if (~aresetn_i)
@@ -135,26 +150,21 @@ module cache_data_read #(
 
   always_ff @(posedge clk_i)
     if (s_handshake)
-      s_id_ff[0] <= s_id;
-  
-  always_ff @(posedge clk_i)
-    if (s_valid_ff[0])
-      s_id_ff[1] <= s_id_ff[0];
+      s_id_ff <= s_id;
 
   always_ff @(posedge clk_i)
     if (s_handshake)
-      set_ff[0] <= s_set;
-  
-  always_ff @(posedge clk_i)
-    if (s_valid_ff[0])
-      set_ff[1] <= set_ff[0];
+      set_ff <= s_set;
 
-  always_ff @(posedge clk_i)
-    if (s_valid_ff[0])
-      read_data_ff <= select_read_data;
-  
-  assign m_data_o.mem_data = read_data_ff ;
-  assign m_data_o.req_id   = s_id_ff[1]   ;
-  assign m_valid_o         = s_valid_ff[1];
+  always_ff @(posedge clk_i or negedge aresetn_i)
+    if (~aresetn_i)
+      plru_tree_read_ff <= 'b0;
+    else if (plru_we_ff)
+      plru_tree_read_ff <= plru_tree_read;
+
+  assign m_data_o.mem_data = select_read_data ;
+  assign m_data_o.req_id   = s_id_ff          ;
+  assign m_valid_o         = s_valid_ff       ;
+  assign plru_tree_o       = plru_tree_read_ff;
 
 endmodule

@@ -50,8 +50,9 @@ module hit_miss_detect #(
   logic [SET_WIDTH  - 1:0] addr_tag_ram  ;
   logic [SET_WIDTH  - 1:0] addr_state_ram;
 
-  logic [WAYS       - 1:0] read_data_status    ;
-  logic [WAYS       - 1:0] write_data_state_ram;
+  logic [WAYS       - 1:0] read_data_status       ;
+  logic [WAYS       - 1:0] read_data_status_ff    ;
+  logic [WAYS       - 1:0] write_data_state_ram   ;
   logic [WAYS       - 1:0] write_data_state_ram_ff;
 
   logic                    tag_mem_req;
@@ -73,18 +74,30 @@ module hit_miss_detect #(
 
   assign cq_valid_edge = ~cq_valid_ff && cq_valid_i;
 
-  assign cq_data_tag   = cq_addr_i [ADDR_WIDTH - 1:SET_WIDTH];
-  assign input_tag     = cpu_addr_i[ADDR_WIDTH - 1:SET_WIDTH];
   assign mem_write_tag = cq_valid_edge ? cq_data_tag : input_tag;
 
-  assign input_cpu_set = cpu_addr_i[SET_WIDTH - 1:0];
-  assign cq_set        = cq_addr_i [SET_WIDTH - 1:0];
+  generate
+    if (SETS == 1) begin
+      assign cq_data_tag   = cq_addr_i ;
+      assign input_tag     = cpu_addr_i;
+
+      assign input_cpu_set = 1'b0;
+      assign cq_set        = 1'b0;
+    end
+    else begin
+      assign cq_data_tag   = cq_addr_i [ADDR_WIDTH - 1:SET_WIDTH];
+      assign input_tag     = cpu_addr_i[ADDR_WIDTH - 1:SET_WIDTH];
+
+      assign input_cpu_set = cpu_addr_i[SET_WIDTH - 1:0];
+      assign cq_set        = cq_addr_i [SET_WIDTH - 1:0];
+    end
+  endgenerate
 
   assign we_state_ram  = init_i || cq_valid_edge;
   
-  assign tag_mem_req   = cpu_valid_i || cq_valid_edge;
+  assign tag_mem_req   = (~stall_i && cpu_valid_i) || cq_valid_edge;
 
-  assign state_mem_req = cpu_valid_i || cq_valid_edge || init_i;
+  assign state_mem_req = (~stall_i && cpu_valid_i) || (cq_valid_edge || init_i);
 
   assign dr_we_o = we_tag_ram;
 
@@ -95,8 +108,11 @@ module hit_miss_detect #(
       we_tag_ram[evict_way] = 1'b1;
   end
 
-  always_ff @(posedge clk_i)
-    cq_set_ff <= cq_set;
+  always_ff @(posedge clk_i or negedge aresetn_i)
+    if (~aresetn_i)
+      cq_set_ff <= {SET_WIDTH{1'b0}};
+    else if (cq_valid_edge)
+      cq_set_ff <= cq_set;
 
   always_comb begin
     addr_tag_ram = cq_set_ff;
@@ -119,7 +135,7 @@ module hit_miss_detect #(
   end
 
   always_comb begin
-    write_data_state_ram = read_data_status;
+    write_data_state_ram = read_data_status_ff;
 
     if (init_i)
       write_data_state_ram            = {WAYS{1'b0}};
@@ -130,6 +146,12 @@ module hit_miss_detect #(
   always_ff @(posedge clk_i)
     if (cq_valid_edge)
       write_data_state_ram_ff <= write_data_state_ram;
+
+  always_ff @(posedge clk_i or negedge aresetn_i)
+    if (~aresetn_i)
+      read_data_status_ff <= {WAYS{1'b0}};
+    else if (state_mem_req && ~we_state_ram)
+      read_data_status_ff <= read_data_status;
 
   plru_calc i_plru_calc
   (
@@ -146,7 +168,7 @@ module hit_miss_detect #(
       ) i_tag_ram (
         .clk_i              (clk_i           ),
         .wr_en_i            (we_tag_ram[i]   ),
-        .req_i              (1'b1            ),
+        .req_i              (tag_mem_req     ),
         .addr_i             (addr_tag_ram    ),
         .write_data_i       (mem_write_tag   ),
         .read_data_o        (read_data_tag[i])
@@ -161,7 +183,7 @@ module hit_miss_detect #(
     ) i_status_ram (
     .clk_i       (clk_i               ),
     .wr_en_i     (we_state_ram        ),
-    .req_i       (1'b1                ),
+    .req_i       (state_mem_req       ),
     .addr_i      (addr_state_ram      ),
     .write_data_i(write_data_state_ram),
     .read_data_o (read_data_status    )
@@ -181,8 +203,16 @@ module hit_miss_detect #(
     if (cpu_valid_i)
       id_o <= cpu_req_id_i;
 
-  assign cpu_tag_ff = cpu_addr_ff[ADDR_WIDTH - 1:SET_WIDTH];
-  assign cpu_set_ff = cpu_addr_ff[SET_WIDTH  - 1:0]        ;
+  generate
+    if (SETS == 1) begin
+      assign cpu_tag_ff = cpu_addr_ff;
+      assign cpu_set_ff = 1'b0       ;
+    end
+    else begin
+      assign cpu_tag_ff = cpu_addr_ff[ADDR_WIDTH - 1:SET_WIDTH];
+      assign cpu_set_ff = cpu_addr_ff[SET_WIDTH  - 1:0]        ;
+    end
+  endgenerate
 
   generate
     for (genvar i = 0; i < WAYS; ++i) begin: g_hit_arr
@@ -190,9 +220,9 @@ module hit_miss_detect #(
     end: g_hit_arr
   endgenerate
 
-  assign hit_o       = |hit_arr_o && valid_o;
-  assign miss_o      = ~hit_o && valid_o  ;
+  assign hit_o       = |hit_arr_o && valid_o     ;
+  assign miss_o      = ~hit_o && valid_o         ;
   assign miss_addr_o = miss_o ? cpu_addr_ff : 'b0;
-  assign set_o       = cpu_set_ff;
+  assign set_o       = cpu_set_ff                ;
 
 endmodule

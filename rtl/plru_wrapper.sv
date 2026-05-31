@@ -33,14 +33,12 @@ import cache_pkg::*;
       shift <= (shift >> 1);
 
   assign write_data   = init_i ? {PLRU_WIDTH{1'b0}} : write_plru_tree;
-  assign write_enable = init_i ? 1'b1 : shift[1];
+  assign write_enable = init_i ? 1'b1 : valid_ff;
   assign handshake    = ready_o && valid_i;
   assign ready_o      = shift[0];
 
-  always_ff @(posedge clk_i or negedge aresetn_i)
-    if (~aresetn_i)
-      hit_ff <= {WAYS{1'b0}};
-    else if (handshake)
+  always_ff @(posedge clk_i)
+    if (handshake)
       hit_ff <= hit_i;
 
   single_port_ram #(

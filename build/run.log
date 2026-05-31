@@ -1,17 +1,17 @@
 xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 15:18:12 MSK
+TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 23:29:42 MSK
 xrun
 	-r tb_configure_cache_opt
 	-64bit
 	-xmlibdirpath /home/Stepan/cache/build/work/top
-	-seed 6925
+	-seed 27656
 	-l /home/Stepan/cache/build/run.log
 	-gui
 	-incdir /home/Stepan/cache/build/../pkg
 	-input xlm.tcl
 	-input @run
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
-SVSEED set from command line: 6925
+SVSEED set from command line: 27656
 xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 xmsim: *E,IONOEN: file does not exist, xlm.tcl.
 
@@ -25,10 +25,20 @@ Simulation complete via $finish(1) at time 5005 NS + 1
 ../tb/tb_configure_cache.sv:103     $finish();
 xcelium> database -open waves -into waves.shm -default
 Created default SHM database waves
-xcelium> probe -create -shm tb_configure_cache.DUT.aresetn_i tb_configure_cache.DUT.clk_i tb_configure_cache.DUT.cpu_addr_i tb_configure_cache.DUT.cpu_data_o tb_configure_cache.DUT.cpu_ready_o tb_configure_cache.DUT.cpu_req_id_i tb_configure_cache.DUT.cpu_req_id_o tb_configure_cache.DUT.cpu_valid_i tb_configure_cache.DUT.cpu_valid_o tb_configure_cache.DUT.credit_cnt tb_configure_cache.DUT.credit_decr tb_configure_cache.DUT.credit_incr tb_configure_cache.DUT.dr_fifo_m_data tb_configure_cache.DUT.dr_fifo_m_ready tb_configure_cache.DUT.dr_fifo_m_valid tb_configure_cache.DUT.dr_fifo_s_data tb_configure_cache.DUT.dr_fifo_s_ready tb_configure_cache.DUT.dr_fifo_s_valid tb_configure_cache.DUT.dr_ram_data_read tb_configure_cache.DUT.dr_ready tb_configure_cache.DUT.dr_valid tb_configure_cache.DUT.fsm_write_back tb_configure_cache.DUT.hmd_addr tb_configure_cache.DUT.hmd_fifo_m_data tb_configure_cache.DUT.hmd_fifo_m_ready tb_configure_cache.DUT.hmd_fifo_m_valid tb_configure_cache.DUT.hmd_fifo_s_data tb_configure_cache.DUT.hmd_fifo_s_ready tb_configure_cache.DUT.hmd_fifo_s_valid tb_configure_cache.DUT.hmd_hit tb_configure_cache.DUT.hmd_id tb_configure_cache.DUT.hmd_miss tb_configure_cache.DUT.hmd_set tb_configure_cache.DUT.hmd_valid_in tb_configure_cache.DUT.hmd_valid_out tb_configure_cache.DUT.hmd_we_dr_out tb_configure_cache.DUT.init tb_configure_cache.DUT.init_cnt_ff tb_configure_cache.DUT.mem_ack_i tb_configure_cache.DUT.mem_addr_o tb_configure_cache.DUT.mem_data_i tb_configure_cache.DUT.mem_handshake tb_configure_cache.DUT.mem_id_i tb_configure_cache.DUT.mem_id_o tb_configure_cache.DUT.mem_req_o tb_configure_cache.DUT.mem_valid_i tb_configure_cache.DUT.plru_tree tb_configure_cache.DUT.work
+xcelium> probe -create -shm tb_configure_cache.DUT.aresetn_i tb_configure_cache.DUT.clk_i tb_configure_cache.DUT.cpu_addr_i tb_configure_cache.DUT.cpu_data_o tb_configure_cache.DUT.cpu_ready_o tb_configure_cache.DUT.cpu_req_id_i tb_configure_cache.DUT.cpu_req_id_o tb_configure_cache.DUT.cpu_valid_i tb_configure_cache.DUT.cpu_valid_o tb_configure_cache.DUT.credit_cnt tb_configure_cache.DUT.credit_decr tb_configure_cache.DUT.credit_incr tb_configure_cache.DUT.dr_fifo_m_data tb_configure_cache.DUT.dr_fifo_m_ready tb_configure_cache.DUT.dr_fifo_m_valid tb_configure_cache.DUT.dr_fifo_s_data tb_configure_cache.DUT.dr_fifo_s_ready tb_configure_cache.DUT.dr_fifo_s_valid tb_configure_cache.DUT.dr_ram_data_read tb_configure_cache.DUT.dr_ready tb_configure_cache.DUT.dr_valid tb_configure_cache.DUT.fsm_write_back tb_configure_cache.DUT.hmd_addr tb_configure_cache.DUT.hmd_hit tb_configure_cache.DUT.hmd_hit_arr tb_configure_cache.DUT.hmd_id tb_configure_cache.DUT.hmd_m_data tb_configure_cache.DUT.hmd_miss tb_configure_cache.DUT.hmd_set tb_configure_cache.DUT.hmd_to_dr_valid tb_configure_cache.DUT.hmd_valid_in tb_configure_cache.DUT.hmd_valid_out tb_configure_cache.DUT.hmd_we_dr_out tb_configure_cache.DUT.init tb_configure_cache.DUT.init_cnt_ff tb_configure_cache.DUT.mem_ack_i tb_configure_cache.DUT.mem_addr_o tb_configure_cache.DUT.mem_data_i tb_configure_cache.DUT.mem_handshake tb_configure_cache.DUT.mem_id_i tb_configure_cache.DUT.mem_id_o tb_configure_cache.DUT.mem_req_o tb_configure_cache.DUT.mem_valid_i tb_configure_cache.DUT.plru_tree tb_configure_cache.DUT.work
 Created probe 1
 xcelium> reset
-SVSEED set from command line: 6925
+SVSEED set from command line: 27656
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+Loaded snapshot worklib.tb_configure_cache_opt:sv
+xcelium> run
+[MEMORY] Initialized 1024 locations with unique data
+Simulation complete via $finish(1) at time 5005 NS + 1
+../tb/tb_configure_cache.sv:103     $finish();
+xcelium> probe -create -shm tb_configure_cache.DUT.i_hmd.addr_state_ram tb_configure_cache.DUT.i_hmd.addr_tag_ram tb_configure_cache.DUT.i_hmd.aresetn_i tb_configure_cache.DUT.i_hmd.clk_i tb_configure_cache.DUT.i_hmd.cpu_addr_ff tb_configure_cache.DUT.i_hmd.cpu_addr_i tb_configure_cache.DUT.i_hmd.cpu_req_id_i tb_configure_cache.DUT.i_hmd.cpu_set_ff tb_configure_cache.DUT.i_hmd.cpu_tag_ff tb_configure_cache.DUT.i_hmd.cpu_valid_i tb_configure_cache.DUT.i_hmd.cq_addr_i tb_configure_cache.DUT.i_hmd.cq_data_tag tb_configure_cache.DUT.i_hmd.cq_set tb_configure_cache.DUT.i_hmd.cq_set_ff tb_configure_cache.DUT.i_hmd.cq_valid_edge tb_configure_cache.DUT.i_hmd.cq_valid_ff tb_configure_cache.DUT.i_hmd.cq_valid_i tb_configure_cache.DUT.i_hmd.dr_we_o tb_configure_cache.DUT.i_hmd.evict_way tb_configure_cache.DUT.i_hmd.hit_arr_o tb_configure_cache.DUT.i_hmd.hit_o tb_configure_cache.DUT.i_hmd.id_o tb_configure_cache.DUT.i_hmd.init_cnt_i tb_configure_cache.DUT.i_hmd.init_i tb_configure_cache.DUT.i_hmd.input_cpu_set tb_configure_cache.DUT.i_hmd.input_tag tb_configure_cache.DUT.i_hmd.mem_write_tag tb_configure_cache.DUT.i_hmd.miss_addr_o tb_configure_cache.DUT.i_hmd.miss_o tb_configure_cache.DUT.i_hmd.plru_tree_i tb_configure_cache.DUT.i_hmd.read_data_status tb_configure_cache.DUT.i_hmd.read_data_status_ff tb_configure_cache.DUT.i_hmd.read_data_tag tb_configure_cache.DUT.i_hmd.set_o tb_configure_cache.DUT.i_hmd.stall_i tb_configure_cache.DUT.i_hmd.state_mem_req tb_configure_cache.DUT.i_hmd.tag_mem_req tb_configure_cache.DUT.i_hmd.valid_o tb_configure_cache.DUT.i_hmd.we_state_ram tb_configure_cache.DUT.i_hmd.we_tag_ram tb_configure_cache.DUT.i_hmd.write_data_state_ram tb_configure_cache.DUT.i_hmd.write_data_state_ram_ff
+Created probe 2
+xcelium> reset
+SVSEED set from command line: 27656
 xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 Loaded snapshot worklib.tb_configure_cache_opt:sv
 xcelium> run
