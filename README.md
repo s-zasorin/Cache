@@ -9,10 +9,6 @@
 
 ![Cache](img/cache.png)
 
-### Схема PLRU WRAPPER
+### Поддержка Hit-Under-Miss
 
-![Cache](img/plru_wrapper.png)
-
-### Схема Skid Buffer
-
-![Cache](img/skid_buffer.png)
+![Hit-Under-Miss](img/cache_hit_under_miss.png)
