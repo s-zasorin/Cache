@@ -1,5 +1,5 @@
 xrun(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	22.03-s001: Started on May 31, 2026 at 23:29:41 MSK
+TOOL:	xrun(64)	22.03-s001: Started on Jun 13, 2026 at 14:34:56 MSK
 xrun
 	-elaborate
 	-elabonly
@@ -9,7 +9,7 @@ xrun
 	-xmlibdirpath /home/Stepan/cache/build/work/top
 	-access +rwc
 	-l /home/Stepan/cache/build/opt.log
-No source files were detected on the command line yet something was detected as out of date: Missing module worklib.hit_miss_detect:sv (SIG) <0x4863a7fd>.
+No source files were detected on the command line yet something was detected as out of date: Missing module worklib.tb_configure_cache:sv (SIG) <0x6d63460a>.
 Rerun with the required source files to ensure recompile.
 	Elaborating the design hierarchy:
 		Caching library 'worklib' ....... Done
@@ -17,23 +17,29 @@ Rerun with the required source files to ensure recompile.
 		cache_pkg
 		tb_configure_cache
 xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+    .wr_addr_i(wr_ptr      ),
+                    |
+xmelab: *W,CUVMPW (../rtl/show_ahead_fifo.sv,62|20): port sizes differ in port connection(4/3) for the instance(tb_configure_cache.DUT.i_mshr.i_id_fifo) .
+    .rd_addr_i(rd_ptr + 'b1),
+                      |
+xmelab: *W,CUVMPW (../rtl/show_ahead_fifo.sv,66|22): port sizes differ in port connection(32/3) for the instance(tb_configure_cache.DUT.i_mshr.i_id_fifo) .
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.hit_miss_detect:sv <0x34bbf2d3>
-			streams:  42, words: 15173
+		worklib.tb_configure_cache:sv <0x6d63460a>
+			streams:  32, words: 24888
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		               Instances  Unique
-		Modules:              18      10
+		Modules:              21      13
 		Verilog packages:      1       1
-		Registers:           166     142
-		Scalar wires:         76       -
+		Registers:           208     184
+		Scalar wires:        107       -
 		Expanded wires:        4       1
-		Vectored wires:      108       -
-		Always blocks:        41      33
+		Vectored wires:      125       -
+		Always blocks:        57      48
 		Initial blocks:        5       5
-		Cont. assignments:    50      51
-		Pseudo assignments:   88      64
+		Cont. assignments:    69      70
+		Pseudo assignments:  108      84
 	Writing initial simulation snapshot: worklib.tb_configure_cache_opt:sv
-TOOL:	xrun(64)	22.03-s001: Exiting on May 31, 2026 at 23:29:41 MSK  (total: 00:00:00)
+TOOL:	xrun(64)	22.03-s001: Exiting on Jun 13, 2026 at 14:34:56 MSK  (total: 00:00:00)

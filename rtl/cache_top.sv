@@ -73,17 +73,27 @@ import cache_pkg::*;
   logic [PLRU_WIDTH          - 1:0] plru_tree  ;
 
   // Local declarations FSM
-  logic                   init          ;
-  logic                   work          ;
-  logic                   fsm_write_back;
-  logic [SET_WIDTH - 1:0] init_cnt_ff   ;
+  logic                   init             ;
+  logic                   work             ;
+  logic                   mem_send_en      ;
+  logic [SET_WIDTH - 1:0] init_cnt_ff      ;
+
+  // Local declarations MSHR
+  logic                   mshr_comp_id     ;
+  logic                   mshr_stall       ;
+  logic                   mshr_id_valid    ;
+  logic [ID_WIDTH  - 1:0] mshr_id_out      ;
+  logic                   mshr_almost_empty;
 
   // Global declarations
-  logic                   mem_handshake;
+  logic                   mem_handshake    ;
+  logic                   global_stall     ;
 
-  assign mem_handshake = mem_req_o && mem_ack_i;
+  assign mem_handshake = mem_req_o && mem_ack_i   ;
 
   assign hmd_valid_in = cpu_valid_i && cpu_ready_o;
+
+  assign global_stall = mshr_stall || mem_send_en ;
 
   hit_miss_detect #(
     .ADDR_WIDTH(ADDR_WIDTH),
@@ -100,7 +110,7 @@ import cache_pkg::*;
     .cpu_valid_i (hmd_valid_in           ),
 
     .init_i      (init                   ),
-    .stall_i     (fsm_write_back         ),
+    .stall_i     (global_stall           ),
     .init_cnt_i  (init_cnt_ff            ),
     .plru_tree_i (plru_tree              ),
     .dr_we_o     (hmd_we_dr_out          ),
@@ -144,7 +154,7 @@ import cache_pkg::*;
     .cq_valid_i    (mem_handshake   ),
 
     .init_i        (init            ),
-    .stall_i       (fsm_write_back  ),
+    .stall_i       (global_stall    ),
     .init_cnt_i    (init_cnt_ff     ),
     .plru_tree_o   (plru_tree       ),
     .write_enable_i(hmd_we_dr_out   ),
@@ -153,34 +163,62 @@ import cache_pkg::*;
     .m_valid_o     (dr_valid        )
   );
 
-  assign mem_req_o = fsm_write_back;
+  always_ff @(posedge clk_i or negedge aresetn_i)
+    if (~aresetn_i)
+      mem_req_o <= 1'b0;
+    else if (mem_handshake)
+      mem_req_o <= 1'b0;
+    else if (hmd_miss && work)
+      mem_req_o <= 1'b1;
 
   always_ff @(posedge clk_i)
     if (hmd_miss && work)
       mem_addr_o <= hmd_addr;
 
-  always_ff @(posedge clk_i)
-    if (hmd_miss && work)
-      mem_id_o   <= hmd_id;
+  assign mem_id_o = mshr_id_out;
 
   cache_fsm i_fsm
   (
-    .clk_i          (clk_i         ),
-    .aresetn_i      (aresetn_i     ),
+    .clk_i              (clk_i            ),
+    .aresetn_i          (aresetn_i        ),
 
-    .miss_i         (hmd_miss      ),
-    .mem_handshake_i(mem_handshake ),
-    .init_o         (init          ),
-    .work_o         (work          ),
-    .init_cnt_o     (init_cnt_ff   ),
-    .write_back_o   (fsm_write_back)
+    .mem_handshake_i    (mem_handshake    ),
+    .mshr_almost_empty_i(mshr_almost_empty),
+    .mshr_en_i          (mshr_comp_id     ),
+
+    .init_o             (init             ),
+    .work_o             (work             ),
+    .init_cnt_o         (init_cnt_ff      ),
+    .mem_send_o         (mem_send_en      )
   );
 
-  // Write-Back
-  assign cpu_ready_o  = ~fsm_write_back;
+  mshr_simple #(
+    .ID_WIDTH  (ID_WIDTH  ),
+    .ADDR_WIDTH(ADDR_WIDTH)
+  ) i_mshr (
+    .clk_i          (clk_i                ),
+    .aresetn_i      (aresetn_i            ),
 
-  assign cpu_valid_o  = (fsm_write_back || (work && ~dr_valid)) ? mem_handshake : dr_valid                 ;
-  assign cpu_req_id_o = (fsm_write_back || (work && ~dr_valid)) ? mem_id_i      : dr_ram_data_read.req_id  ;
-  assign cpu_data_o   = (fsm_write_back || (work && ~dr_valid)) ? mem_data_i    : dr_ram_data_read.mem_data;
+    .miss_id_i      (hmd_id               ),
+    .miss_addr_i    (hmd_addr             ),
+    .miss_valid_i   (hmd_valid_out && work),
+
+    .mem_handshake_i(mem_handshake        ),
+    .send_id_en_i   (mem_send_en          ),
+
+    .stall_o        (mshr_stall           ),
+    .id_o           (mshr_id_out          ),
+    .almost_empty_o (mshr_almost_empty    ),
+    .valid_o        (mshr_valid           )
+  );
+
+  assign mshr_comp_id = (mshr_id_out == mem_id_i) && mshr_valid && mem_handshake;
+
+  // Write-Back
+  assign cpu_ready_o  = ~global_stall;
+
+  assign cpu_valid_o  = (mem_send_en) ? 1'b1          : dr_valid                 ;
+  assign cpu_req_id_o = (mem_send_en) ? mshr_id_out   : dr_ram_data_read.req_id  ;
+  assign cpu_data_o   = (mem_send_en) ? mem_data_i    : dr_ram_data_read.mem_data;
 
 endmodule

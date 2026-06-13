@@ -12,8 +12,10 @@ module show_ahead_fifo #(parameter type struct_t = logic,
   // Master Interface
   output struct_t m_tdata_o ,
   output logic    m_tvalid_o,
-  input  logic    m_tready_i
+  input  logic    m_tready_i,
 
+  // Additional Interface
+  output logic   almost_empty_o
 );
 
   localparam int unsigned DATA_WIDTH = $bits(struct_t);
@@ -31,14 +33,13 @@ module show_ahead_fifo #(parameter type struct_t = logic,
   logic                    m_handshake    ;
   logic                    s_handshake    ;
   logic                    enable_head_reg; // разрешение на запись в head register
-  logic                    almost_empty   ; // почти пуст по первому порту
   logic                    wr_en          ; // запись в RAM память
   logic                    rd_en          ; // чтение из RAM памяти
 
   assign full            = wr_ptr[PTR_WIDTH - 1:0] == rd_ptr[PTR_WIDTH - 1:0] && (wr_ptr[PTR_WIDTH] != rd_ptr[PTR_WIDTH]);
   assign empty           = wr_ptr[PTR_WIDTH - 1:0] == rd_ptr[PTR_WIDTH - 1:0] && (wr_ptr[PTR_WIDTH] == rd_ptr[PTR_WIDTH]);
 
-  assign almost_empty    = empty && bypass_en || (wr_ptr == rd_ptr + 'b1);
+  assign almost_empty_o  = empty && bypass_en || (wr_ptr == rd_ptr + 'b1);
 
   assign m_handshake     = m_tvalid_o && m_tready_i;
   assign s_handshake     = s_tvalid_i  && s_tready_o ;
@@ -46,7 +47,7 @@ module show_ahead_fifo #(parameter type struct_t = logic,
   assign s_tready_o      = ~full;
   assign m_tvalid_o      = ~empty || bypass_en;
 
-  assign enable_head_reg = s_handshake && (empty || m_handshake && almost_empty);
+  assign enable_head_reg = s_handshake && (empty || m_handshake && almost_empty_o);
 
   assign wr_en           = s_handshake && ~enable_head_reg;
 

@@ -13,12 +13,8 @@ import cache_pkg::*;
 
   always_comb begin
     way_index = '0;
-    
     for (int lvl = 0; lvl < BINARY_TREE_LEVELS; lvl++) begin
-      // Используем уже накопленные старшие биты для расчета node_idx
-      // Младшие биты (которые еще не определены) игнорируем
       node_idx = ((1 << lvl) - 1) + (way_index >> (BINARY_TREE_LEVELS - lvl));
-      
       way_index[BINARY_TREE_LEVELS - lvl - 1] = plru_tree_i[node_idx];
     end
     

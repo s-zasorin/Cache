@@ -21,7 +21,7 @@
 /home/Stepan/cache/build/../rtl/plru_wrapper.sv
 /home/Stepan/cache/build/../rtl/cache_fsm.sv
 /home/Stepan/cache/build/../rtl/hit_miss_detect.sv
-/home/Stepan/cache/build/../rtl/mshr.sv
+/home/Stepan/cache/build/../rtl/mshr_simple.sv
 /home/Stepan/cache/build/../rtl/cache_data_read.sv
 /home/Stepan/cache/build/../tb/tb_configure_cache.sv
 -XMLIBDIRPATH

@@ -17,6 +17,10 @@ package cache_pkg;
   } status_t;
 
   typedef struct packed {
+    logic [ID_WIDTH - 1:0] id;
+  } id_t;
+
+  typedef struct packed {
     logic [DATA_WIDTH - 1:0] data  ;
     logic [TAG_WIDTH  - 1:0] tag   ;
     status_t                 status;
@@ -25,7 +29,6 @@ package cache_pkg;
   typedef struct packed {
     logic [ADDR_WIDTH - 1:0] miss_addr;
     logic                    valid    ;
-    logic [ID_WIDTH   - 1:0] req_id   ;
   } mshr_line_t;
 
   typedef struct packed {
